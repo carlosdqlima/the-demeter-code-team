@@ -101,11 +101,11 @@ class Game {
                 systems: Object.keys(this.systems).length
             });
             
-            // Mostra mensagem de boas-vindas
+            // Show welcome message
             if (this.systems.modals) {
                 this.systems.modals.success(
-                    'Bem-vindo ao NASA Farm Navigators! Explore o mundo e construa fazendas sustentáveis.',
-                    'Jogo Iniciado'
+                    'Welcome to NASA Farm Navigators! Explore the world and build sustainable farms.',
+                    'Game Started'
                 );
             }
             

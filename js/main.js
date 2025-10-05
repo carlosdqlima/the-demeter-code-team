@@ -100,22 +100,22 @@ class GameInstance {
     async initializeSystems() {
         const systems = [
             { name: 'NASA API', init: () => this.initializeNASAApi() },
-            { name: 'Modal de Informações', init: () => this.initializeRegionModal() },
-            { name: 'Mapa Mundial', init: () => this.initializeMapSystem() },
-            { name: 'Sistema de Fazendas', init: () => this.initializeFarmSystem() },
-            { name: 'Sistema Climático', init: () => this.initializeWeatherSystem() },
-            { name: 'Sistema Econômico', init: () => this.initializeEconomySystem() },
-            { name: 'Sistema de Tecnologia', init: () => this.initializeTechSystem() },
-            { name: 'Interface do Usuário', init: () => this.initializeUIManager() }
+            { name: 'Information Modal', init: () => this.initializeRegionModal() },
+            { name: 'World Map', init: () => this.initializeMapSystem() },
+            { name: 'Farm System', init: () => this.initializeFarmSystem() },
+            { name: 'Weather System', init: () => this.initializeWeatherSystem() },
+            { name: 'Economy System', init: () => this.initializeEconomySystem() },
+            { name: 'Technology System', init: () => this.initializeTechSystem() },
+            { name: 'User Interface', init: () => this.initializeUIManager() }
         ];
         
         for (let i = 0; i < systems.length; i++) {
             const system = systems[i];
             
             try {
-                this.updateLoadingProgress((i / systems.length) * 100, `Inicializando ${system.name}...`);
+                this.updateLoadingProgress((i / systems.length) * 100, `Initializing ${system.name}...`);
                 await system.init();
-                console.log(`✅ ${system.name} inicializado`);
+                console.log(`✅ ${system.name} initialized`);
                 
             } catch (error) {
                 console.error(`❌ Erro ao inicializar ${system.name}:`, error);
@@ -137,28 +137,28 @@ class GameInstance {
             await this.nasaDataSystem.initialize();
             console.log('✅ Sistema de dados NASA inicializado');
         } else {
-            console.warn('⚠️ Sistema de dados NASA não encontrado');
+            console.warn('⚠️ NASA data system not found');
         }
         
-        await Utils.delay(500); // Simula tempo de inicialização
+        await Utils.delay(500); // Simulates initialization time
     }
     
     /**
-     * Inicializa o modal de informações da região
+     * Initializes the region information modal
      */
     async initializeRegionModal() {
         try {
-            // Inicializa o modal de informações da região
+            // Initialize the region information modal
             window.regionInfoModal = new RegionInfoModal();
-            console.log('Modal de informações da região inicializado');
+            console.log('Region information modal initialized');
         } catch (error) {
-            console.error('Erro ao inicializar modal de informações:', error);
+            console.error('Error initializing information modal:', error);
             throw error;
         }
     }
     
     /**
-     * Inicializa sistema de mapa
+     * Initializes map system
      */
     async initializeMapSystem() {
         this.mapSystem = new MapSystem();
@@ -166,7 +166,7 @@ class GameInstance {
     }
     
     /**
-     * Inicializa sistema de fazendas
+     * Initializes farm system
      */
     async initializeFarmSystem() {
         try {

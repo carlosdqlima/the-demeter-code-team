@@ -34,38 +34,89 @@
     width: 40px;
     height: 40px;
     background: #8B4513;
-    border: 1px solid #654321;
-    border-radius: 4px;
+    border: 2px solid #654321;
+    border-radius: 6px;
     position: relative;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .farm-plot:hover {
-    transform: scale(1.05);
+    transform: scale(1.08);
     border-color: #FFD700;
-    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.5);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.6);
+    z-index: 2;
 }
 
 .farm-plot.selected {
     border-color: #00FF00;
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
+    animation: plotSelection 2s ease-in-out infinite;
+}
+
+/* Estados de ação */
+.farm-plot.planting {
+    animation: plantingAction 1.5s ease-out;
+}
+
+.farm-plot.harvesting {
+    animation: harvestingAction 1.5s ease-out;
+}
+
+.farm-plot.watering {
+    animation: wateringAction 1.5s ease-out;
 }
 
 /* Estados do solo */
 .farm-plot.dry {
     background: #D2691E;
+    border-color: #8B4513;
+    box-shadow: 0 0 8px rgba(210, 105, 30, 0.5);
 }
 
 .farm-plot.watered {
-    background: #8B4513;
-    box-shadow: inset 0 0 10px rgba(0, 100, 200, 0.3);
+    background: #228B22;
+    border-color: #006400;
+    box-shadow: 0 0 8px rgba(34, 139, 34, 0.5);
+    animation: wateringAction 0.5s ease-out;
 }
 
 .farm-plot.fertilized {
-    background: #A0522D;
-    box-shadow: inset 0 0 10px rgba(255, 215, 0, 0.3);
+    background: #DAA520;
+    border-color: #B8860B;
+    box-shadow: 0 0 8px rgba(218, 165, 32, 0.5);
+}
+
+/* Estados especiais */
+.farm-plot.recently-planted {
+    animation: plantingAction 2s ease-out;
+}
+
+.farm-plot.recently-harvested {
+    animation: harvestingAction 2s ease-out;
+}
+
+.farm-plot.needs-attention {
+    border-color: #FF6B6B;
+    box-shadow: 0 0 10px rgba(255, 107, 107, 0.6);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.farm-plot.optimal {
+    border-color: #4ECDC4;
+    box-shadow: 0 0 10px rgba(78, 205, 196, 0.6);
+}
+
+.farm-plot.empty {
+    background: #8B4513;
+    opacity: 0.8;
+}
+
+.farm-plot.has-crop {
+    background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+    border-color: #654321;
 }
 
 /* Culturas visuais */
@@ -75,29 +126,65 @@
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 20px;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     pointer-events: none;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.3));
 }
 
 .visual-crop.stage-0 {
     font-size: 12px;
-    opacity: 0.7;
+    opacity: 0.9;
+    animation: seedSprout 2s ease-out;
+    border: 2px solid #FFFFFF;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.8), 0 0 3px rgba(255, 255, 255, 0.6);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
 }
 
 .visual-crop.stage-1 {
     font-size: 16px;
     opacity: 0.8;
+    animation: cropGrowth 1.5s ease-out;
 }
 
 .visual-crop.stage-2 {
-    font-size: 20px;
-    opacity: 0.9;
+    font-size: 22px;
+    opacity: 0.95;
+    animation: cropGrowth 1.5s ease-out;
 }
 
 .visual-crop.stage-3 {
-    font-size: 24px;
+    font-size: 26px;
     opacity: 1;
-    animation: mature-glow 2s ease-in-out infinite alternate;
+    animation: matureGlow 3s ease-in-out infinite alternate;
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+}
+
+/* Culturas específicas com cores melhoradas */
+.crop-visual {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    transition: all 0.4s ease;
+    pointer-events: none;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.crop-visual.growing {
+    animation: cropHighlight 2s ease-in-out infinite;
+}
+
+.crop-visual.ready {
+    animation: matureGlow 2s ease-in-out infinite alternate;
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+}
+
+.crop-visual.dead-crop {
+    filter: grayscale(100%) brightness(0.5);
+    animation: none;
 }
 
 @keyframes mature-glow {
@@ -114,25 +201,55 @@
     position: absolute;
     top: 2px;
     right: 2px;
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    z-index: 1;
+    z-index: 3;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
 }
 
 .status-indicator.needs-water {
     background: #FF4444;
-    animation: pulse 1s ease-in-out infinite;
+    animation: pulse 1.5s ease-in-out infinite;
+    box-shadow: 0 0 8px rgba(255, 68, 68, 0.6);
 }
 
 .status-indicator.needs-fertilizer {
     background: #FFD700;
-    animation: pulse 1s ease-in-out infinite;
+    animation: pulse 1.5s ease-in-out infinite;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
 }
 
 .status-indicator.ready-harvest {
     background: #00FF00;
-    animation: pulse 1s ease-in-out infinite;
+    animation: pulse 1.5s ease-in-out infinite;
+    box-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
+}
+
+.status-indicator.growing {
+    background: #4CAF50;
+    animation: pulse 2s ease-in-out infinite;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
+}
+
+/* Indicadores múltiplos */
+.plot-indicators {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    z-index: 3;
+}
+
+.plot-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
 }
 
 @keyframes pulse {
@@ -429,8 +546,11 @@
 
 /* Estados de drag & drop */
 .farm-plot.drag-over {
-    outline: 2px dashed rgba(0, 180, 255, 0.7);
-    outline-offset: -2px;
+    background: #FFE4B5;
+    border-color: #DEB887;
+    transform: scale(1.1);
+    box-shadow: 0 0 12px rgba(255, 228, 181, 0.8);
+    animation: plotSelection 1s ease-in-out infinite;
 }
 
 .tool-btn.dragging {

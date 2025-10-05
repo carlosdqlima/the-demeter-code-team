@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="NASA Farm Navigators - Jogo de agricultura global com dados reais da NASA">
-    <title>NASA Farm Navigators - Agricultura Global</title>
+    <meta name="description" content="NASA Farm Navigators - Global agriculture game with real NASA data">
+    <title>NASA Farm Navigators - Global Agriculture</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/images/ui/favicon.ico">
@@ -23,7 +23,7 @@
 <body>
     <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen">
-        <!-- Partículas espaciais flutuantes -->
+        <!-- Floating space particles -->
         <div class="space-particles">
             <div class="particle particle-1"></div>
             <div class="particle particle-2"></div>
@@ -41,26 +41,26 @@
             <div class="loading-bar">
                 <div class="loading-progress" id="loading-progress"></div>
             </div>
-            <p id="loading-text">🚀 Conectando com satélites da NASA...</p>
+            <p id="loading-text">🚀 Connecting to NASA satellites...</p>
         </div>
     </div>
 
-    <!-- Overlay do Mapa Mundial em Tela Cheia -->
+    <!-- World Map Fullscreen Overlay -->
     <div id="world-map-overlay" class="world-map-overlay active">
         <div class="overlay-header">
             <h1>🌍 NASA Farm Navigators</h1>
-            <p>Selecione uma região para começar sua jornada agrícola</p>
+            <p>Select a region to start your agricultural journey</p>
         </div>
         <div id="world-map-fullscreen" class="world-map-fullscreen"></div>
         <div class="overlay-footer">
             <div class="map-legend">
                 <div class="legend-item">
                     <span class="legend-color" style="background: #059669;"></span>
-                    <span>Regiões Agrícolas Disponíveis</span>
+                    <span>Available Agricultural Regions</span>
                 </div>
                 <div class="legend-item">
                     <span class="legend-color" style="background: #f59e0b;"></span>
-                    <span>Clique para Selecionar</span>
+                    <span>Click to Select</span>
                 </div>
             </div>
         </div>
@@ -94,23 +94,23 @@
                     </div>
                     <div class="stat-item">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span id="selected-region">Região Selecionada</span>
+                        <span id="selected-region">Selected Region</span>
                     </div>
                 </div>
             </div>
             
             <div class="header-right">
                 <div class="game-controls">
-                    <button class="btn-icon" id="change-region-btn" title="Trocar Região">
+                    <button class="btn-icon" id="change-region-btn" title="Change Region">
                         <i class="fas fa-globe"></i>
                     </button>
-                    <button class="btn-icon" id="settings-btn" title="Configurações">
+                    <button class="btn-icon" id="settings-btn" title="Settings">
                         <i class="fas fa-cog"></i>
                     </button>
-                    <button class="btn-icon" id="help-btn" title="Ajuda">
+                    <button class="btn-icon" id="help-btn" title="Help">
                         <i class="fas fa-question-circle"></i>
                     </button>
-                    <button class="btn-icon" id="fullscreen-btn" title="Tela Cheia">
+                    <button class="btn-icon" id="fullscreen-btn" title="Fullscreen">
                         <i class="fas fa-expand"></i>
                     </button>
                 </div>
@@ -149,144 +149,144 @@
                     </div>
                 </div>
 
-                <!-- Indicadores de Problemas (lado esquerdo) -->
+                <!-- Problem Indicators (left side) -->
                 <div class="problem-indicators">
-                    <div class="indicator-item" id="drought-indicator" title="Seca">
+                    <div class="indicator-item" id="drought-indicator" title="Drought">
                         <span class="indicator-icon">🌵</span>
                     </div>
-                    <div class="indicator-item" id="pest-indicator" title="Pragas">
+                    <div class="indicator-item" id="pest-indicator" title="Pests">
                         <span class="indicator-icon">🐛</span>
                     </div>
-                    <div class="indicator-item" id="disease-indicator" title="Doenças">
+                    <div class="indicator-item" id="disease-indicator" title="Diseases">
                         <span class="indicator-icon">🦠</span>
                     </div>
-                    <div class="indicator-item" id="weather-indicator" title="Clima Extremo">
+                    <div class="indicator-item" id="weather-indicator" title="Extreme Weather">
                         <span class="indicator-icon">⛈️</span>
                     </div>
                 </div>
 
-                <!-- Container do Mapa Mundial -->
+                <!-- World Map Container -->
                 <div id="world-map" class="world-map-container" style="display: none;">
-                    <!-- O mapa será criado dinamicamente aqui -->
+                    <!-- The map will be created dynamically here -->
                 </div>
 
-                <!-- Container da Fazenda HTML -->
+                <!-- HTML Farm Container -->
                 <div id="farm-container" class="farm-container" style="display: none;">
-                    <!-- O grid da fazenda será criado dinamicamente aqui -->
+                    <!-- The farm grid will be created dynamically here -->
                 </div>
                 
-                <!-- Controles da Fazenda -->
+                <!-- Farm Controls -->
                 <div class="farm-controls" style="display: none;">
                     <div class="toolbar">
                         <div class="tool-section">
-                            <h4>Ferramentas</h4>
+                            <h4>Tools</h4>
                             <div class="tool-buttons">
-                                <button class="tool-btn active" data-tool="plant" title="Plantar">
+                                <button class="tool-btn active" data-tool="plant" title="Plant">
                                     <i class="fas fa-seedling"></i>
-                                    <span>Plantar</span>
+                                    <span>Plant</span>
                                 </button>
-                                <button class="tool-btn" data-tool="harvest" title="Colher">
+                                <button class="tool-btn" data-tool="harvest" title="Harvest">
                                     <i class="fas fa-cut"></i>
-                                    <span>Colher</span>
+                                    <span>Harvest</span>
                                 </button>
-                                <button class="tool-btn" data-tool="water" title="Regar">
+                                <button class="tool-btn" data-tool="water" title="Water">
                                     <i class="fas fa-tint"></i>
-                                    <span>Regar</span>
+                                    <span>Water</span>
                                 </button>
-                                <button class="tool-btn" data-tool="fertilize" title="Fertilizar">
+                                <button class="tool-btn" data-tool="fertilize" title="Fertilize">
                                     <i class="fas fa-flask"></i>
-                                    <span>Fertilizar</span>
+                                    <span>Fertilize</span>
                                 </button>
                             </div>
                         </div>
                         
                         <div class="care-section">
-                            <h4>Cuidados</h4>
+                            <h4>Care</h4>
                             <div class="care-buttons">
-                                <button class="tool-btn" data-tool="pesticide" title="Aplicar Pesticida">
+                                <button class="tool-btn" data-tool="pesticide" title="Apply Pesticide">
                                     <i class="fas fa-spray-can"></i>
-                                    <span>Pesticida</span>
+                                    <span>Pesticide</span>
                                 </button>
-                                <button class="tool-btn" data-tool="organic-fertilizer" title="Adubo Orgânico">
+                                <button class="tool-btn" data-tool="organic-fertilizer" title="Organic Fertilizer">
                                     <i class="fas fa-leaf"></i>
-                                    <span>Adubo Org.</span>
+                                    <span>Organic Fert.</span>
                                 </button>
-                                <button class="tool-btn" data-tool="soil-analysis" title="Análise do Solo">
+                                <button class="tool-btn" data-tool="soil-analysis" title="Soil Analysis">
                                     <i class="fas fa-microscope"></i>
-                                    <span>Análise</span>
+                                    <span>Analysis</span>
                                 </button>
-                                <button class="tool-btn" data-tool="clean" title="Limpar Parcela">
+                                <button class="tool-btn" data-tool="clean" title="Clean Plot">
                                     <i class="fas fa-broom"></i>
-                                    <span>Limpar</span>
+                                    <span>Clean</span>
                                 </button>
-                                <button class="tool-btn" data-tool="irrigation" title="Sistema de Irrigação">
+                                <button class="tool-btn" data-tool="irrigation" title="Irrigation System">
                                     <i class="fas fa-shower"></i>
-                                    <span>Irrigação</span>
+                                    <span>Irrigation</span>
                                 </button>
-                                <button class="tool-btn" data-tool="mulch" title="Cobertura do Solo">
+                                <button class="tool-btn" data-tool="mulch" title="Soil Cover">
                                     <i class="fas fa-layer-group"></i>
-                                    <span>Cobertura</span>
+                                    <span>Mulch</span>
                                 </button>
                             </div>
                         </div>
                         
                         <div class="crop-section">
-                            <h4>Culturas</h4>
+                            <h4>Crops</h4>
                             <div class="crop-buttons">
-                                <button class="crop-btn active" data-crop="wheat" title="Trigo">
+                                <button class="crop-btn active" data-crop="wheat" title="Wheat">
                                     <i class="fas fa-wheat-awn"></i>
-                                    <span>Trigo</span>
+                                    <span>Wheat</span>
                                 </button>
-                                <button class="crop-btn" data-crop="corn" title="Milho">
+                                <button class="crop-btn" data-crop="corn" title="Corn">
                                     <i class="fas fa-corn"></i>
-                                    <span>Milho</span>
+                                    <span>Corn</span>
                                 </button>
-                                <button class="crop-btn" data-crop="soy" title="Soja">
+                                <button class="crop-btn" data-crop="soy" title="Soy">
                                     <i class="fas fa-leaf"></i>
-                                    <span>Soja</span>
+                                    <span>Soy</span>
                                 </button>
-                                <button class="crop-btn" data-crop="tomato" title="Tomate">
+                                <button class="crop-btn" data-crop="tomato" title="Tomato">
                                     <i class="fas fa-apple-alt"></i>
-                                    <span>Tomate</span>
+                                    <span>Tomato</span>
                                 </button>
-                                <button class="crop-btn" data-crop="potato" title="Batata">
+                                <button class="crop-btn" data-crop="potato" title="Potato">
                                     <i class="fas fa-circle"></i>
-                                    <span>Batata</span>
+                                    <span>Potato</span>
                                 </button>
-                                <button class="crop-btn" data-crop="carrot" title="Cenoura">
+                                <button class="crop-btn" data-crop="carrot" title="Carrot">
                                     <i class="fas fa-carrot"></i>
-                                    <span>Cenoura</span>
+                                    <span>Carrot</span>
                                 </button>
                             </div>
                         </div>
                         
                         <div class="zoom-section">
-                            <h4>Visualização</h4>
+                            <h4>View</h4>
                             <div class="zoom-controls">
-                                <button class="zoom-btn" id="zoom-out" title="Diminuir Zoom">
+                                <button class="zoom-btn" id="zoom-out" title="Zoom Out">
                                     <i class="fas fa-search-minus"></i>
                                 </button>
                                 <span class="zoom-level" id="zoom-level">100%</span>
-                                <button class="zoom-btn" id="zoom-in" title="Aumentar Zoom">
+                                <button class="zoom-btn" id="zoom-in" title="Zoom In">
                                     <i class="fas fa-search-plus"></i>
                                 </button>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Botão para voltar ao mapa -->
-                    <button id="back-to-map" class="back-to-map-btn" style="display: none;" title="Voltar ao Mapa">
+                    <!-- Button to return to map -->
+                    <button id="back-to-map" class="back-to-map-btn" style="display: none;" title="Back to Map">
                         <i class="fas fa-globe"></i>
-                        <span>Voltar ao Mapa</span>
+                        <span>Back to Map</span>
                     </button>
                 </div>
                 
-                <!-- Interface Integrada NASA Farm Navigators -->
+                <!-- NASA Farm Navigators Integrated Interface -->
                 
                 <!-- Game Overlay UI -->
                 <div class="game-overlay">
                     <div class="region-info" id="region-info">
-                        <h4 id="region-name">Selecione uma região</h4>
+                        <h4 id="region-name">Select a region</h4>
                         <div class="region-stats">
                             <div class="stat">
                                 <i class="fas fa-thermometer-half"></i>
@@ -304,155 +304,155 @@
                     </div>
                 </div>
 
-                <!-- Botões de Ação (parte inferior) -->
+                <!-- Action Buttons (bottom section) -->
                 <div class="bottom-controls">
-                    <!-- Botão Glossário -->
-                    <button class="control-btn glossary-btn" id="glossary-btn" title="Glossário">
+                    <!-- Glossary Button -->
+                    <button class="control-btn glossary-btn" id="glossary-btn" title="Glossary">
                         <span class="btn-icon">📖</span>
                     </button>
 
-                    <!-- Botões de Tecnologia -->
+                    <!-- Technology Buttons -->
                     <div class="tech-buttons">
-                        <button class="tech-btn locked" title="Tecnologia Bloqueada">
+                        <button class="tech-btn locked" title="Technology Locked">
                             <span class="lock-icon">🔒</span>
                         </button>
                         <div class="tech-separator"></div>
-                        <button class="tech-btn locked" title="Tecnologia Bloqueada">
+                        <button class="tech-btn locked" title="Technology Locked">
                             <span class="lock-icon">🔒</span>
                         </button>
-                        <button class="tech-btn locked" title="Tecnologia Bloqueada">
+                        <button class="tech-btn locked" title="Technology Locked">
                             <span class="lock-icon">🔒</span>
                         </button>
-                        <button class="tech-btn locked" title="Tecnologia Bloqueada">
+                        <button class="tech-btn locked" title="Technology Locked">
                             <span class="lock-icon">🔒</span>
                         </button>
                     </div>
 
-                    <!-- Botão de Culturas -->
-                    <button class="control-btn crops-btn" id="crops-btn" title="Culturas">
+                    <!-- Crops Button -->
+                    <button class="control-btn crops-btn" id="crops-btn" title="Crops">
                         <span class="btn-icon">🌾</span>
                     </button>
                 </div>
 
-                <!-- Mensagem de Status -->
+                <!-- Status Message -->
                 <div class="status-message" id="status-message">
-                    <p>Mantenha os olhos abertos para problemas em sua fazenda e não deixe que saiam de controle! Pode haver ferramentas em sua árvore de tecnologia que poderiam ajudar a combater alguns desses desafios.</p>
+                    <p>Keep your eyes open for problems on your farm and don't let them get out of control! There may be tools in your technology tree that could help combat some of these challenges.</p>
                 </div>
 
                 <!-- NASA Data Panel (Hidden by default) -->
                 <div class="panel nasa-panel hidden">
                     <div class="panel-header">
-                        <h3><i class="fas fa-satellite"></i> Dados NASA</h3>
+                        <h3><i class="fas fa-satellite"></i> NASA Data</h3>
                         <div class="data-sources">
-                            <small>Última atualização: <span id="nasa-last-update">--</span></small>
+                            <small>Last update: <span id="nasa-last-update">--</span></small>
                         </div>
                     </div>
                     <div class="panel-content">
-                        <!-- Dados de Clima NASA POWER -->
+                        <!-- NASA POWER Climate Data -->
                         <div class="nasa-data-section">
-                            <h4><i class="fas fa-cloud-sun"></i> Clima (NASA POWER)</h4>
+                            <h4><i class="fas fa-cloud-sun"></i> Climate (NASA POWER)</h4>
                             <div class="data-item">
                                 <i class="fas fa-thermometer-half"></i>
-                                <span>Temperatura: <span id="nasa-temperature">--°C</span></span>
+                                <span>Temperature: <span id="nasa-temperature">--°C</span></span>
                             </div>
                             <div class="data-item">
                                 <i class="fas fa-cloud-rain"></i>
-                                <span>Precipitação: <span id="nasa-precipitation">-- mm</span></span>
+                                <span>Precipitation: <span id="nasa-precipitation">-- mm</span></span>
                             </div>
                             <div class="data-item">
                                 <i class="fas fa-sun"></i>
-                                <span>Radiação Solar: <span id="nasa-solar-radiation">-- MJ/m²</span></span>
+                                <span>Solar Radiation: <span id="nasa-solar-radiation">-- MJ/m²</span></span>
                             </div>
                             <div class="data-item">
                                 <i class="fas fa-tint"></i>
-                                <span>Umidade: <span id="nasa-humidity">--%</span></span>
+                                <span>Humidity: <span id="nasa-humidity">--%</span></span>
                             </div>
                             <div class="data-item">
                                 <i class="fas fa-wind"></i>
-                                <span>Vento: <span id="nasa-wind-speed">-- m/s</span></span>
+                                <span>Wind: <span id="nasa-wind-speed">-- m/s</span></span>
                             </div>
-                            <small class="data-source">Fonte: <span id="climate-source">--</span></small>
+                            <small class="data-source">Source: <span id="climate-source">--</span></small>
                         </div>
 
-                        <!-- Dados de Satélite NASA -->
+                        <!-- NASA Satellite Data -->
                         <div class="nasa-data-section">
-                            <h4><i class="fas fa-satellite"></i> Satélite (MODIS/Landsat)</h4>
+                            <h4><i class="fas fa-satellite"></i> Satellite (MODIS/Landsat)</h4>
                             <div class="data-item">
                                 <i class="fas fa-leaf"></i>
                                 <span>NDVI: <span id="nasa-ndvi">--</span></span>
                             </div>
                             <div class="data-item">
                                 <i class="fas fa-thermometer-half"></i>
-                                <span>Temp. Superfície: <span id="nasa-land-temp">--°C</span></span>
+                                <span>Surface Temp: <span id="nasa-land-temp">--°C</span></span>
                             </div>
                             <div class="data-item">
                                 <i class="fas fa-cloud"></i>
-                                <span>Cobertura Nuvens: <span id="nasa-cloud-cover">--%</span></span>
+                                <span>Cloud Cover: <span id="nasa-cloud-cover">--%</span></span>
                             </div>
-                            <small class="data-source">Fonte: <span id="satellite-source">--</span></small>
+                            <small class="data-source">Source: <span id="satellite-source">--</span></small>
                         </div>
 
-                        <!-- Dados de Solo NASA SMAP -->
+                        <!-- NASA SMAP Soil Data -->
                         <div class="nasa-data-section">
-                            <h4><i class="fas fa-seedling"></i> Solo (SMAP)</h4>
+                            <h4><i class="fas fa-seedling"></i> Soil (SMAP)</h4>
                             <div class="data-item">
                                 <i class="fas fa-tint"></i>
-                                <span>Umidade do Solo: <span id="nasa-soil-moisture">--%</span></span>
+                                <span>Soil Moisture: <span id="nasa-soil-moisture">--%</span></span>
                             </div>
                             <div class="data-item">
                                 <i class="fas fa-thermometer-half"></i>
-                                <span>Temperatura do Solo: <span id="nasa-soil-temp">--°C</span></span>
+                                <span>Soil Temperature: <span id="nasa-soil-temp">--°C</span></span>
                             </div>
                             <div class="data-item">
                                 <i class="fas fa-leaf"></i>
-                                <span>Matéria Orgânica: <span id="nasa-organic-matter">--%</span></span>
+                                <span>Organic Matter: <span id="nasa-organic-matter">--%</span></span>
                             </div>
                             <div class="data-item">
                                 <i class="fas fa-vial"></i>
-                                <span>pH do Solo: <span id="nasa-soil-ph">--</span></span>
+                                <span>Soil pH: <span id="nasa-soil-ph">--</span></span>
                             </div>
                             <div class="data-item">
                                 <i class="fas fa-water"></i>
-                                <span>Salinidade: <span id="nasa-soil-salinity">-- dS/m</span></span>
+                                <span>Salinity: <span id="nasa-soil-salinity">-- dS/m</span></span>
                             </div>
-                            <small class="data-source">Fonte: <span id="soil-source">--</span></small>
+                            <small class="data-source">Source: <span id="soil-source">--</span></small>
                         </div>
 
-                        <!-- Dados Legados (para compatibilidade) -->
+                        <!-- Legacy Data (for compatibility) -->
                         <div class="nasa-data-section" style="display: none;">
-                            <h4>Condições Atuais (Legado)</h4>
+                            <h4>Current Conditions (Legacy)</h4>
                             <div class="data-item">
                                 <i class="fas fa-thermometer-half"></i>
-                                <span>Temperatura do Solo: <span id="soil-temp">--°C</span></span>
+                                <span>Soil Temperature: <span id="soil-temp">--°C</span></span>
                             </div>
                             <div class="data-item">
                                 <i class="fas fa-tint"></i>
-                                <span>Umidade do Solo: <span id="soil-moisture">--%</span></span>
+                                <span>Soil Moisture: <span id="soil-moisture">--%</span></span>
                             </div>
                             <div class="data-item">
                                 <i class="fas fa-leaf"></i>
-                                <span>Índice de Vegetação: <span id="vegetation-index">--</span></span>
+                                <span>Vegetation Index: <span id="vegetation-index">--</span></span>
                             </div>
                         </div>
 
-                        <!-- Imagem de Satélite NASA -->
+                        <!-- NASA Satellite Image -->
                         <div class="section-header">
-                            <h4>📡 Imagem de Satélite</h4>
+                            <h4>📡 Satellite Image</h4>
                         </div>
                         <div id="satellite-image" class="satellite-container">
-                            <p style="text-align: center; color: #999;">Carregando imagem de satélite...</p>
+                            <p style="text-align: center; color: #999;">Loading satellite image...</p>
                         </div>
 
-                        <!-- Atividades Agrícolas -->
+                        <!-- Agricultural Activities -->
                         <div class="section-header">
-                            <h4>🌱 Atividades Agrícolas</h4>
+                            <h4>🌱 Agricultural Activities</h4>
                         </div>
                         <div id="activities-panel" class="activities-container">
-                            <p style="text-align: center; color: #999;">Carregando atividades...</p>
+                            <p style="text-align: center; color: #999;">Loading activities...</p>
                         </div>
                         
                         <div class="conservation-tips">
-                            <h4>Dicas de Conservação</h4>
+                            <h4>Conservation Tips</h4>
                             <div id="conservation-tips-content">
                                 <!-- Tips will be populated by JavaScript -->
                             </div>
@@ -463,7 +463,7 @@
                 <!-- Market Panel (Hidden by default) -->
                 <div class="panel market-panel hidden">
                     <div class="panel-header">
-                        <h3><i class="fas fa-chart-bar"></i> Mercado Global</h3>
+                        <h3><i class="fas fa-chart-bar"></i> Global Market</h3>
                     </div>
                     <div class="panel-content">
                         <div class="market-prices" id="market-prices">
@@ -479,14 +479,14 @@
             <div class="status-left">
                 <div class="weather-info">
                     <i class="fas fa-cloud-sun"></i>
-                    <span id="current-weather">Ensolarado, 25°C</span>
+                    <span id="current-weather">Sunny, 25°C</span>
                 </div>
             </div>
             
             <div class="status-center">
                 <div class="game-time">
                     <i class="fas fa-calendar-alt"></i>
-                    <span id="game-date">Primavera, Ano 1</span>
+                    <span id="game-date">Spring, Year 1</span>
                 </div>
             </div>
             
@@ -503,7 +503,7 @@
     <div id="modal-overlay" class="modal-overlay hidden">
         <div class="modal" id="settings-modal">
             <div class="modal-header">
-                <h3>Configurações</h3>
+                <h3>Settings</h3>
                 <button class="modal-close">&times;</button>
             </div>
             <div class="modal-content">
@@ -512,12 +512,12 @@
         </div>
     </div>
 
-    <!-- Modal de Informações da Região -->
+    <!-- Region Information Modal -->
     <div id="region-info-modal" class="modal region-info-modal hidden">
         <div class="modal-overlay" onclick="RegionInfoModal.close()"></div>
         <div class="modal-content region-info-content">
             <div class="modal-header">
-                <h2 id="region-modal-title">Informações da Região</h2>
+                <h2 id="region-modal-title">Region Information</h2>
                 <button class="modal-close" onclick="RegionInfoModal.close()">
                     <i class="fas fa-times"></i>
                 </button>
@@ -530,23 +530,23 @@
                         <div class="region-flag" id="region-flag"></div>
                     </div>
                     <div class="region-basic-info">
-                        <h3 id="region-name">Nome da Região</h3>
-                        <p id="region-description">Descrição da região...</p>
+                        <h3 id="region-name">Region Name</h3>
+                        <p id="region-description">Region description...</p>
                     </div>
                 </div>
                 
                 <div class="region-details">
                     <div class="detail-section">
-                        <h4><i class="fas fa-thermometer-half"></i> Clima</h4>
+                        <h4><i class="fas fa-thermometer-half"></i> Climate</h4>
                         <div class="climate-info">
-                            <span id="region-climate" class="climate-tag">Temperado</span>
+                            <span id="region-climate" class="climate-tag">Temperate</span>
                             <div class="climate-stats">
                                 <div class="stat">
-                                    <span class="label">Temperatura:</span>
+                                    <span class="label">Temperature:</span>
                                     <span id="region-temperature">15-25°C</span>
                                 </div>
                                 <div class="stat">
-                                    <span class="label">Precipitação:</span>
+                                    <span class="label">Precipitation:</span>
                                     <span id="region-precipitation">800-1200mm</span>
                                 </div>
                             </div>
@@ -554,19 +554,19 @@
                     </div>
                     
                     <div class="detail-section">
-                        <h4><i class="fas fa-seedling"></i> Especialidades Agrícolas</h4>
+                        <h4><i class="fas fa-seedling"></i> Agricultural Specialties</h4>
                         <div id="region-specialties" class="specialties-grid">
-                            <!-- Especialidades serão inseridas dinamicamente -->
+                            <!-- Specialties will be inserted dynamically -->
                         </div>
                     </div>
                     
                     <div class="detail-section">
-                        <h4><i class="fas fa-chart-line"></i> Bônus Regional</h4>
+                        <h4><i class="fas fa-chart-line"></i> Regional Bonus</h4>
                         <div class="bonus-info">
                             <div class="bonus-card">
                                 <i id="bonus-icon" class="fas fa-star"></i>
                                 <div class="bonus-details">
-                                    <span id="bonus-type">Tipo de Bônus</span>
+                                    <span id="bonus-type">Bonus Type</span>
                                     <span id="bonus-value" class="bonus-value">+15%</span>
                                 </div>
                             </div>
@@ -574,17 +574,17 @@
                     </div>
                     
                     <div class="detail-section">
-                        <h4><i class="fas fa-satellite"></i> Dados NASA</h4>
+                        <h4><i class="fas fa-satellite"></i> NASA Data</h4>
                         <div class="nasa-data">
                             <div class="data-item">
-                                <span class="label">Qualidade do Solo:</span>
+                                <span class="label">Soil Quality:</span>
                                 <div class="progress-bar">
                                     <div id="soil-quality" class="progress-fill" style="width: 85%"></div>
                                 </div>
                                 <span class="value">85%</span>
                             </div>
                             <div class="data-item">
-                                <span class="label">Disponibilidade Hídrica:</span>
+                                <span class="label">Water Availability:</span>
                                 <div class="progress-bar">
                                     <div id="water-availability" class="progress-fill" style="width: 70%"></div>
                                 </div>
@@ -598,11 +598,11 @@
             <div class="modal-footer">
                 <button class="btn btn-secondary" onclick="RegionInfoModal.close()">
                     <i class="fas fa-arrow-left"></i>
-                    Voltar ao Mapa
+                    Back to Map
                 </button>
                 <button class="btn btn-primary" id="confirm-region-btn" onclick="RegionInfoModal.confirmSelection()">
                     <i class="fas fa-check"></i>
-                    Iniciar Fazenda Aqui
+                    Start Farm Here
                 </button>
             </div>
         </div>

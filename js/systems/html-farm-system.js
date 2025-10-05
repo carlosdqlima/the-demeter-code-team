@@ -250,14 +250,82 @@ class HtmlFarmSystem {
         const existingIndicators = plotElement.querySelectorAll('.plot-indicator');
         existingIndicators.forEach(indicator => indicator.remove());
         
+        // Remove classes de estado anteriores (exceto animações temporárias)
+        plotElement.classList.remove('empty', 'has-crop', 'needs-attention', 'optimal', 'dry', 'watered', 'fertilized');
+        
         if (plot && plot.crop) {
+            plotElement.classList.add('has-crop');
             this.addCropVisual(plotElement, plot.crop);
             this.addPlotIndicators(plotElement, plot);
+            this.updatePlotStateClasses(plotElement, plot);
+        } else {
+            plotElement.classList.add('empty');
         }
         
         // Atualiza cor do solo baseado no nível de água e fertilidade
         if (plot) {
             this.updateSoilColor(plotElement, plot);
+        }
+    }
+
+    /**
+     * Atualiza classes CSS baseadas no estado da parcela
+     */
+    updatePlotStateClasses(plotElement, plot) {
+        // Estado de água
+        if (plot.waterLevel < 0.3) {
+            plotElement.classList.add('dry');
+        } else if (plot.waterLevel > 0.7) {
+            plotElement.classList.add('watered');
+        }
+        
+        // Estado de fertilidade
+        if (plot.fertilityLevel > 0.6) {
+            plotElement.classList.add('fertilized');
+        }
+        
+        // Estado geral da parcela
+        const needsWater = plot.waterLevel < 0.3;
+        const needsFertilizer = plot.fertilityLevel < 0.3;
+        const cropHealth = plot.crop ? plot.crop.health : 100;
+        
+        if (needsWater || needsFertilizer || cropHealth < 50) {
+            plotElement.classList.add('needs-attention');
+        } else if (plot.waterLevel > 0.6 && plot.fertilityLevel > 0.6 && cropHealth > 80) {
+            plotElement.classList.add('optimal');
+        }
+    }
+
+    /**
+     * Adiciona classes CSS baseadas no estado da cultura
+     */
+    addCropStateClasses(cropElement, crop) {
+        // Estado de saúde
+        if (crop.health <= 0) {
+            cropElement.classList.add('dead-crop');
+        } else if (crop.health < 30) {
+            cropElement.classList.add('unhealthy');
+        } else if (crop.health > 80) {
+            cropElement.classList.add('healthy');
+        }
+        
+        // Estado de crescimento
+        if (crop.isReady()) {
+            cropElement.classList.add('ready');
+        } else if (crop.stage === 'growing' || crop.stage === 'mature') {
+            cropElement.classList.add('growing');
+        }
+        
+        // Estado baseado no progresso
+        const progress = crop.progress || 0;
+        if (progress < 0.25) {
+            cropElement.classList.add('stage-0');
+        } else if (progress < 0.5) {
+            cropElement.classList.add('stage-1');
+        } else if (progress < 0.75) {
+            cropElement.classList.add('stage-2');
+        } else {
+            cropElement.classList.add('stage-3');
         }
     }
 
@@ -272,6 +340,9 @@ class HtmlFarmSystem {
         cropElement.className = 'crop-visual';
         cropElement.dataset.cropType = crop.type;
         cropElement.dataset.stage = crop.stage;
+        
+        // Adiciona classes baseadas no estado da cultura
+        this.addCropStateClasses(cropElement, crop);
         
         const size = this.getCropSize(crop);
         const colors = this.getCropColors(crop.type);
@@ -288,12 +359,22 @@ class HtmlFarmSystem {
         } else if (crop.stage === 'seed') {
             // Semente - cor específica da semente
             backgroundColor = colors.seed;
+            cropElement.classList.add('stage-0');
         } else if (crop.isReady()) {
             // Planta madura - cor madura
             backgroundColor = colors.mature;
+            cropElement.classList.add('ready', 'stage-3');
         } else {
             // Planta em crescimento - cor primária
             backgroundColor = colors.primary;
+            cropElement.classList.add('growing');
+            
+            // Adiciona classe de estágio específico
+            if (crop.stage === 'seedling') {
+                cropElement.classList.add('stage-1');
+            } else if (crop.stage === 'growing') {
+                cropElement.classList.add('stage-2');
+            }
         }
         
         cropElement.style.cssText = `
@@ -485,56 +566,56 @@ class HtmlFarmSystem {
     getCropColors(cropType) {
         const colors = {
             'wheat': { 
-                seed: '#8B4513', 
+                seed: '#FFE4B5', 
                 primary: '#DAA520', 
                 secondary: '#228B22',
                 mature: '#F4A460',
                 dead: '#8B0000'
             },
             'corn': { 
-                seed: '#654321', 
+                seed: '#FFFF99', 
                 primary: '#FFD700', 
                 secondary: '#32CD32',
                 mature: '#FFA500',
                 dead: '#8B0000'
             },
             'soy': { 
-                seed: '#2F4F2F', 
+                seed: '#98FB98', 
                 primary: '#9ACD32', 
                 secondary: '#006400',
                 mature: '#ADFF2F',
                 dead: '#8B0000'
             },
             'rice': { 
-                seed: '#D2B48C', 
+                seed: '#F5F5DC', 
                 primary: '#F5DEB3', 
                 secondary: '#228B22',
                 mature: '#FFFACD',
                 dead: '#8B0000'
             },
             'cotton': { 
-                seed: '#696969', 
+                seed: '#E6E6FA', 
                 primary: '#F8F8FF', 
                 secondary: '#90EE90',
                 mature: '#FFFFFF',
                 dead: '#8B0000'
             },
             'tomato': { 
-                seed: '#8B4513', 
+                seed: '#FFB6C1', 
                 primary: '#FF6347', 
                 secondary: '#228B22',
                 mature: '#DC143C',
                 dead: '#8B0000'
             },
             'potato': { 
-                seed: '#A0522D', 
+                seed: '#F5DEB3', 
                 primary: '#DEB887', 
                 secondary: '#228B22',
                 mature: '#CD853F',
                 dead: '#8B0000'
             },
             'carrot': { 
-                seed: '#D2691E', 
+                seed: '#FFA07A', 
                 primary: '#FF8C00', 
                 secondary: '#228B22',
                 mature: '#FF4500',
@@ -543,7 +624,7 @@ class HtmlFarmSystem {
         };
         
         return colors[cropType] || { 
-            seed: '#8B4513', 
+            seed: '#F0E68C', 
             primary: '#90EE90', 
             secondary: '#228B22',
             mature: '#32CD32',
@@ -975,8 +1056,11 @@ class HtmlFarmSystem {
         
         const success = this.activeFarm.plantCrop(x, y, this.selectedCrop);
         if (success) {
+            // Adiciona feedback visual imediato
+            this.addPlantingFeedback(plotElement);
             this.updatePlotDisplay(plotElement, this.activeFarm.getPlot(x, y));
             this.createPlantParticles(x, y);
+            this.showActionFeedback(plotElement, 'Plantado!', '#4CAF50');
         }
     }
 
@@ -986,8 +1070,11 @@ class HtmlFarmSystem {
     handleHarvestAction(x, y, plotElement) {
         const success = this.activeFarm.harvestCrop(x, y);
         if (success) {
+            // Adiciona feedback visual imediato
+            this.addHarvestingFeedback(plotElement);
             this.updatePlotDisplay(plotElement, this.activeFarm.getPlot(x, y));
             this.createHarvestParticles(x, y);
+            this.showActionFeedback(plotElement, 'Colhido!', '#FFD700');
         }
     }
 
@@ -997,9 +1084,12 @@ class HtmlFarmSystem {
     handleWaterAction(x, y, plotElement) {
         const plot = this.activeFarm.getPlot(x, y);
         if (plot) {
+            // Adiciona feedback visual imediato
+            this.addWateringFeedback(plotElement);
             plot.water();
             this.updatePlotDisplay(plotElement, plot);
             this.createWaterParticles(x, y);
+            this.showActionFeedback(plotElement, 'Regado!', '#4169E1');
         }
     }
 
@@ -1322,6 +1412,50 @@ class HtmlFarmSystem {
                 }
             }, 1000);
         }
+    }
+
+    /**
+     * Adiciona feedback visual de plantio
+     */
+    addPlantingFeedback(plotElement) {
+        plotElement.classList.add('planting', 'recently-planted');
+        
+        // Remove classes após animação
+        setTimeout(() => {
+            plotElement.classList.remove('planting');
+        }, 1500);
+        
+        setTimeout(() => {
+            plotElement.classList.remove('recently-planted');
+        }, 2000);
+    }
+
+    /**
+     * Adiciona feedback visual de colheita
+     */
+    addHarvestingFeedback(plotElement) {
+        plotElement.classList.add('harvesting', 'recently-harvested');
+        
+        // Remove classes após animação
+        setTimeout(() => {
+            plotElement.classList.remove('harvesting');
+        }, 1500);
+        
+        setTimeout(() => {
+            plotElement.classList.remove('recently-harvested');
+        }, 2000);
+    }
+
+    /**
+     * Adiciona feedback visual de irrigação
+     */
+    addWateringFeedback(plotElement) {
+        plotElement.classList.add('watering');
+        
+        // Remove classe após animação
+        setTimeout(() => {
+            plotElement.classList.remove('watering');
+        }, 1500);
     }
 
     /**
