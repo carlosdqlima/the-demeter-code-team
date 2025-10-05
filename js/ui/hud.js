@@ -315,26 +315,6 @@ class HUD {
                         <span class="btn-icon">💧</span>
                         <span class="btn-text">Regar</span>
                     </button>
-                    <button class="quick-action-btn tool-btn" id="btn-smart-irrigation" data-tool="smart-irrigation" draggable="true">
-                        <span class="btn-icon">🚿</span>
-                        <span class="btn-text">Irrigação Inteligente</span>
-                    </button>
-                    <button class="quick-action-btn tool-btn" id="btn-livestock-management" data-tool="livestock-management" draggable="true">
-                        <span class="btn-icon">🐮</span>
-                        <span class="btn-text">Manejo de Gado</span>
-                    </button>
-                    <button class="quick-action-btn tool-btn" id="btn-environmental-monitoring" data-tool="environmental-monitoring" draggable="true">
-                        <span class="btn-icon">📊</span>
-                        <span class="btn-text">Monitoramento Ambiental</span>
-                    </button>
-                    <button class="quick-action-btn tool-btn" id="btn-precision-fertilization" data-tool="precision-fertilization" draggable="true">
-                        <span class="btn-icon">🎯</span>
-                        <span class="btn-text">Fertilização de Precisão</span>
-                    </button>
-                    <button class="quick-action-btn tool-btn" id="btn-crop-rotation" data-tool="crop-rotation" draggable="true">
-                        <span class="btn-icon">🔄</span>
-                        <span class="btn-text">Rotação de Culturas</span>
-                    </button>
                 </div>
             </div>
         `;
@@ -367,24 +347,6 @@ class HUD {
                     <span class="resource-icon">🧪</span>
                     <span class="resource-amount" id="resource-fertilizer">0</span>
                 </div>
-            </div>
-            
-            <div class="hud-section main-actions">
-                <button class="main-action-btn tool-btn" id="btn-harvest-main" data-tool="harvest" draggable="true" title="Colher">
-                    <span class="action-icon">🌾</span>
-                </button>
-                <button class="main-action-btn tool-btn" id="btn-water-main" data-tool="water" draggable="true" title="Regar">
-                    <span class="action-icon">💧</span>
-                </button>
-                <button class="main-action-btn tool-btn" id="btn-fertilize-main" data-tool="fertilize" draggable="true" title="Fertilizar">
-                    <span class="action-icon">⚗️</span>
-                </button>
-                <button class="main-action-btn tool-btn" id="btn-pesticide-main" data-tool="pesticide" draggable="true" title="Pesticida">
-                    <span class="action-icon">🛡️</span>
-                </button>
-                <button class="main-action-btn tool-btn" id="btn-organic-fertilizer-main" data-tool="organic-fertilizer" draggable="true" title="Adubo Orgânico">
-                    <span class="action-icon">🌿</span>
-                </button>
             </div>
             
             <div class="hud-section controls-info">
@@ -497,37 +459,6 @@ class HUD {
         if (cleanBtn) {
             cleanBtn.addEventListener('click', () => this.dispatchEvent('farmCare', { action: 'clean' }));
             this.setupDragAndDrop(cleanBtn, 'clean');
-        }
-
-        // Botões de ações principais na barra inferior
-        const harvestMainBtn = document.getElementById('btn-harvest-main');
-        if (harvestMainBtn) {
-            harvestMainBtn.addEventListener('click', () => this.dispatchEvent('farmCare', { action: 'harvest' }));
-            this.setupDragAndDrop(harvestMainBtn, 'harvest');
-        }
-        
-        const waterMainBtn = document.getElementById('btn-water-main');
-        if (waterMainBtn) {
-            waterMainBtn.addEventListener('click', () => this.dispatchEvent('farmCare', { action: 'water' }));
-            this.setupDragAndDrop(waterMainBtn, 'water');
-        }
-        
-        const fertilizeMainBtn = document.getElementById('btn-fertilize-main');
-        if (fertilizeMainBtn) {
-            fertilizeMainBtn.addEventListener('click', () => this.dispatchEvent('farmCare', { action: 'fertilize' }));
-            this.setupDragAndDrop(fertilizeMainBtn, 'fertilize');
-        }
-        
-        const pesticideMainBtn = document.getElementById('btn-pesticide-main');
-        if (pesticideMainBtn) {
-            pesticideMainBtn.addEventListener('click', () => this.dispatchEvent('farmCare', { action: 'pesticide' }));
-            this.setupDragAndDrop(pesticideMainBtn, 'pesticide');
-        }
-        
-        const organicFertilizerMainBtn = document.getElementById('btn-organic-fertilizer-main');
-        if (organicFertilizerMainBtn) {
-            organicFertilizerMainBtn.addEventListener('click', () => this.dispatchEvent('farmCare', { action: 'organic-fertilizer' }));
-            this.setupDragAndDrop(organicFertilizerMainBtn, 'organic-fertilizer');
         }
         
         const coverageBtn = document.getElementById('btn-coverage');

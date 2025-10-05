@@ -56,7 +56,6 @@ export default defineConfig({
       output: {
         manualChunks: {
           // Separar bibliotecas grandes em chunks
-          phaser: ['phaser'],
           vendor: ['axios']
         }
       }
@@ -100,7 +99,7 @@ export default defineConfig({
   
   // Configurações de otimização de dependências
   optimizeDeps: {
-    include: ['phaser', 'axios'],
+    include: ['axios'],
     exclude: []
   },
   
