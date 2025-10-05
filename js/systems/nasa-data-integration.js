@@ -138,27 +138,104 @@ class NASADataIntegration {
      * @param {number} lon - Longitude
      * @returns {Promise<Object>} Dados da NASA
      */
-    async fetchNASAData(lat, lon) {
+    async fetchNASAData(lat = 0, lon = 0) {
         try {
-            // Busca imagem de satélite da NASA
-            const satelliteImage = await this.fetchSatelliteImage(lat, lon);
+            console.log('🛰️ Iniciando busca completa de dados da NASA...');
             
-            // Simula dados da NASA para desenvolvimento
-            const mockData = this.generateMockData(lat, lon);
+            // Busca dados de clima da NASA POWER
+            const climateData = await this.fetchClimateData(lat, lon);
             
+            // Busca dados de satélite da NASA
+            const satelliteData = await this.fetchSatelliteData(lat, lon);
+            
+            // Busca dados de solo da NASA SMAP
+            const soilData = await this.fetchSoilData(lat, lon);
+            
+            // Combina todos os dados
             this.currentData = {
-                ...mockData,
-                satelliteImage: satelliteImage,
+                // Dados de clima
+                temperature: climateData.temperature,
+                precipitation: climateData.precipitation,
+                solarRadiation: climateData.solarRadiation,
+                humidity: climateData.humidity,
+                windSpeed: climateData.windSpeed,
+                
+                // Dados de satélite
+                satelliteImage: satelliteData.image,
+                vegetationIndex: satelliteData.ndvi,
+                landSurfaceTemperature: satelliteData.landSurfaceTemperature,
+                cloudCover: satelliteData.cloudCover,
+                
+                // Dados de solo
+                soilMoisture: soilData.soilMoisture,
+                soilTemperature: soilData.soilTemperature,
+                organicMatter: soilData.organicMatter,
+                soilPH: soilData.ph,
+                soilSalinity: soilData.salinity,
+                
+                // Metadados
+                coordinates: { lat, lon },
+                dataSources: {
+                    climate: climateData.source,
+                    satellite: satelliteData.source,
+                    soil: soilData.source
+                },
                 lastUpdate: new Date()
             };
+            
+            console.log('✅ Dados completos da NASA obtidos:', this.currentData);
             
             this.updateUI();
             this.updateDecisionRecommendations();
             return this.currentData;
             
         } catch (error) {
-            console.error('Erro ao buscar dados da NASA:', error);
-            return null;
+            console.error('❌ Erro ao buscar dados da NASA:', error);
+            
+            // Fallback para dados simulados
+            const mockData = this.generateMockData(lat, lon);
+            this.currentData = {
+                ...mockData,
+                lastUpdate: new Date()
+            };
+            
+            this.updateUI();
+            return this.currentData;
+        }
+    }
+
+    /**
+     * Busca dados de satélite da NASA para uma localização
+     * @param {number} lat - Latitude
+     * @param {number} lon - Longitude
+     * @returns {Promise<Object>} Dados de satélite da NASA
+     */
+    async fetchSatelliteData(lat = 0, lon = 0) {
+        try {
+            console.log('🛰️ Buscando dados de satélite da NASA...');
+            
+            // Busca imagem de satélite
+            const imageData = await this.fetchSatelliteImage(lat, lon);
+            
+            // Busca dados MODIS (simulado por enquanto, pois requer processamento complexo)
+            const modisData = await this.fetchMODISData(lat, lon);
+            
+            const satelliteData = {
+                image: imageData,
+                ndvi: modisData.ndvi,
+                landSurfaceTemperature: modisData.lst,
+                cloudCover: modisData.cloudCover,
+                coordinates: { lat, lon },
+                source: 'NASA Earth Imagery + MODIS',
+                lastUpdate: new Date()
+            };
+            
+            console.log('✅ Dados de satélite da NASA obtidos com sucesso:', satelliteData);
+            return satelliteData;
+            
+        } catch (error) {
+            console.warn('⚠️ Erro ao buscar dados de satélite da NASA, usando dados simulados:', error);
+            return this.generateMockSatelliteData(lat, lon);
         }
     }
 
@@ -170,8 +247,8 @@ class NASADataIntegration {
      */
     async fetchSatelliteImage(lat, lon) {
         try {
-            // Usando API real da NASA (requer chave API)
-            const apiKey = 'DEMO_KEY'; // Em produção, usar chave real
+            // Usando API real da NASA
+            const apiKey = GameConfig?.nasa?.apiKey || 'DEMO_KEY';
             const date = new Date().toISOString().split('T')[0];
             
             const url = `${this.apiEndpoints.earthImagery}?lon=${lon}&lat=${lat}&date=${date}&dim=0.5&api_key=${apiKey}`;
@@ -187,6 +264,45 @@ class NASADataIntegration {
             console.warn('Erro ao buscar imagem de satélite, usando fallback:', error);
             return this.generateMockSatelliteImage(lat, lon);
         }
+    }
+
+    /**
+     * Busca dados MODIS simulados (implementação futura para dados reais)
+     * @param {number} lat - Latitude
+     * @param {number} lon - Longitude
+     * @returns {Promise<Object>} Dados MODIS
+     */
+    async fetchMODISData(lat, lon) {
+        // Por enquanto, simula dados MODIS
+        // Em implementação futura, usar APIs como:
+        // - NASA MODIS Web Service
+        // - Google Earth Engine
+        // - AppEEARS
+        
+        return {
+            ndvi: this.generateRealisticValue(0.2, 0.8),
+            lst: this.generateRealisticValue(15, 35),
+            cloudCover: this.generateRealisticValue(0, 30),
+            source: 'MODIS Simulado'
+        };
+    }
+
+    /**
+     * Gera dados de satélite simulados como fallback
+     * @param {number} lat - Latitude
+     * @param {number} lon - Longitude
+     * @returns {Object} Dados de satélite simulados
+     */
+    generateMockSatelliteData(lat, lon) {
+        return {
+            image: this.generateMockSatelliteImage(lat, lon),
+            ndvi: this.generateRealisticValue(0.2, 0.8),
+            landSurfaceTemperature: this.generateRealisticValue(15, 35),
+            cloudCover: this.generateRealisticValue(0, 30),
+            coordinates: { lat, lon },
+            source: 'Dados Simulados',
+            lastUpdate: new Date()
+        };
     }
 
     /**
@@ -216,6 +332,77 @@ class NASADataIntegration {
         ctx.fillRect(0, 0, 400, 400);
         
         return canvas.toDataURL();
+    }
+
+    /**
+     * Busca dados de solo da NASA SMAP
+     * @param {number} lat - Latitude
+     * @param {number} lon - Longitude
+     * @returns {Promise<Object>} Dados de solo da NASA
+     */
+    async fetchSoilData(lat = 0, lon = 0) {
+        try {
+            console.log('🌱 Buscando dados de solo da NASA SMAP...');
+            
+            // Por enquanto, simula dados SMAP pois a API requer processamento complexo
+            // Em implementação futura, usar:
+            // - NASA SMAP Data Access
+            // - AppEEARS para dados SMAP
+            // - Earthdata Search
+            
+            const soilData = await this.fetchSMAPData(lat, lon);
+            
+            console.log('✅ Dados de solo da NASA obtidos com sucesso:', soilData);
+            return soilData;
+            
+        } catch (error) {
+            console.warn('⚠️ Erro ao buscar dados de solo da NASA, usando dados simulados:', error);
+            return this.generateMockSoilData(lat, lon);
+        }
+    }
+
+    /**
+     * Busca dados SMAP simulados (implementação futura para dados reais)
+     * @param {number} lat - Latitude
+     * @param {number} lon - Longitude
+     * @returns {Promise<Object>} Dados SMAP
+     */
+    async fetchSMAPData(lat, lon) {
+        // Simula dados SMAP realistas
+        // Em implementação futura, usar APIs como:
+        // - NASA Earthdata Search
+        // - AppEEARS
+        // - SMAP Data Pool
+        
+        return {
+            soilMoisture: this.generateRealisticValue(25, 45),
+            soilTemperature: this.generateRealisticValue(15, 35),
+            organicMatter: this.generateRealisticValue(2, 8),
+            ph: this.generateRealisticValue(6.0, 7.5),
+            salinity: this.generateRealisticValue(0.1, 2.0),
+            coordinates: { lat, lon },
+            source: 'SMAP Simulado',
+            lastUpdate: new Date()
+        };
+    }
+
+    /**
+     * Gera dados de solo simulados como fallback
+     * @param {number} lat - Latitude
+     * @param {number} lon - Longitude
+     * @returns {Object} Dados de solo simulados
+     */
+    generateMockSoilData(lat, lon) {
+        return {
+            soilMoisture: this.generateRealisticValue(25, 45),
+            soilTemperature: this.generateRealisticValue(15, 35),
+            organicMatter: this.generateRealisticValue(2, 8),
+            ph: this.generateRealisticValue(6.0, 7.5),
+            salinity: this.generateRealisticValue(0.1, 2.0),
+            coordinates: { lat, lon },
+            source: 'Dados Simulados',
+            lastUpdate: new Date()
+        };
     }
 
     /**
@@ -253,16 +440,104 @@ class NASADataIntegration {
     }
 
     /**
-     * Busca dados reais da NASA (implementação futura)
+     * Busca dados reais de clima da NASA POWER API
+     * @param {number} lat - Latitude
+     * @param {number} lon - Longitude
+     * @returns {Promise<Object>} Dados de clima da NASA
      */
-    async fetchRealNASAData() {
-        // Implementação futura para APIs reais da NASA
-        // Exemplos de endpoints:
-        // - MODIS Land Surface Temperature
-        // - SMAP Soil Moisture
-        // - Landsat NDVI
-        // - GLDAS Precipitation
-        console.log('🔄 Buscando dados reais da NASA...');
+    async fetchClimateData(lat = 0, lon = 0) {
+        try {
+            console.log('🌡️ Buscando dados de clima da NASA POWER...');
+            
+            // Data atual e 7 dias atrás para obter dados recentes
+            const endDate = new Date();
+            const startDate = new Date();
+            startDate.setDate(endDate.getDate() - 7);
+            
+            const formatDate = (date) => {
+                return date.toISOString().split('T')[0].replace(/-/g, '');
+            };
+            
+            // Parâmetros para a API NASA POWER
+            const parameters = [
+                'T2M',        // Temperatura a 2m
+                'PRECTOTCORR', // Precipitação corrigida
+                'ALLSKY_SFC_SW_DWN', // Radiação solar
+                'RH2M',       // Umidade relativa
+                'WS2M'        // Velocidade do vento
+            ].join(',');
+            
+            const url = `${this.apiEndpoints.power}/temporal/daily/point?` +
+                `parameters=${parameters}&` +
+                `community=AG&` +
+                `longitude=${lon}&` +
+                `latitude=${lat}&` +
+                `start=${formatDate(startDate)}&` +
+                `end=${formatDate(endDate)}&` +
+                `format=JSON`;
+            
+            const response = await fetch(url);
+            
+            if (!response.ok) {
+                throw new Error(`Erro na API NASA POWER: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            
+            // Processa os dados recebidos
+            const processedData = this.processClimateData(data);
+            
+            console.log('✅ Dados de clima da NASA obtidos com sucesso:', processedData);
+            return processedData;
+            
+        } catch (error) {
+            console.warn('⚠️ Erro ao buscar dados de clima da NASA, usando dados simulados:', error);
+            return this.generateMockClimateData(lat, lon);
+        }
+    }
+
+    /**
+     * Processa dados de clima da NASA POWER API
+     * @param {Object} rawData - Dados brutos da API
+     * @returns {Object} Dados processados
+     */
+    processClimateData(rawData) {
+        const properties = rawData.properties;
+        const parameter = properties.parameter;
+        
+        // Obtém os valores mais recentes de cada parâmetro
+        const getLatestValue = (paramData) => {
+            const dates = Object.keys(paramData).sort();
+            return paramData[dates[dates.length - 1]];
+        };
+        
+        return {
+            temperature: getLatestValue(parameter.T2M || {}),
+            precipitation: getLatestValue(parameter.PRECTOTCORR || {}),
+            solarRadiation: getLatestValue(parameter.ALLSKY_SFC_SW_DWN || {}),
+            humidity: getLatestValue(parameter.RH2M || {}),
+            windSpeed: getLatestValue(parameter.WS2M || {}),
+            source: 'NASA POWER API',
+            lastUpdate: new Date()
+        };
+    }
+
+    /**
+     * Gera dados de clima simulados como fallback
+     * @param {number} lat - Latitude
+     * @param {number} lon - Longitude
+     * @returns {Object} Dados de clima simulados
+     */
+    generateMockClimateData(lat, lon) {
+        return {
+            temperature: this.generateRealisticValue(15, 35),
+            precipitation: this.generateRealisticValue(0, 15),
+            solarRadiation: this.generateRealisticValue(15, 25),
+            humidity: this.generateRealisticValue(40, 80),
+            windSpeed: this.generateRealisticValue(2, 12),
+            source: 'Dados Simulados',
+            lastUpdate: new Date()
+        };
     }
 
     /**
@@ -333,7 +608,16 @@ class NASADataIntegration {
      * Atualiza interface com dados NASA
      */
     updateUI() {
-        // Atualiza elementos da interface
+        // Atualiza dados de clima
+        this.updateClimateData();
+        
+        // Atualiza dados de satélite
+        this.updateSatelliteData();
+        
+        // Atualiza dados de solo
+        this.updateSoilData();
+        
+        // Atualiza elementos básicos da interface
         const soilTempElement = document.getElementById('soil-temp');
         const soilMoistureElement = document.getElementById('soil-moisture');
         const vegetationIndexElement = document.getElementById('vegetation-index');
@@ -356,6 +640,93 @@ class NASADataIntegration {
         // Atualiza imagem de satélite se disponível
         if (this.currentData.satelliteImage) {
             this.updateSatelliteImage();
+        }
+        
+        // Atualiza fontes de dados
+        this.updateDataSources();
+    }
+
+    /**
+     * Atualiza dados de clima na interface
+     */
+    updateClimateData() {
+        const climateElements = {
+            'nasa-temperature': this.currentData.temperature,
+            'nasa-precipitation': this.currentData.precipitation,
+            'nasa-solar-radiation': this.currentData.solarRadiation,
+            'nasa-humidity': this.currentData.humidity,
+            'nasa-wind-speed': this.currentData.windSpeed
+        };
+        
+        Object.entries(climateElements).forEach(([id, value]) => {
+            const element = document.getElementById(id);
+            if (element && value !== undefined) {
+                element.textContent = typeof value === 'number' ? value.toFixed(1) : value;
+            }
+        });
+    }
+
+    /**
+     * Atualiza dados de satélite na interface
+     */
+    updateSatelliteData() {
+        const satelliteElements = {
+            'nasa-ndvi': this.currentData.vegetationIndex,
+            'nasa-land-temp': this.currentData.landSurfaceTemperature,
+            'nasa-cloud-cover': this.currentData.cloudCover
+        };
+        
+        Object.entries(satelliteElements).forEach(([id, value]) => {
+            const element = document.getElementById(id);
+            if (element && value !== undefined) {
+                element.textContent = typeof value === 'number' ? value.toFixed(2) : value;
+            }
+        });
+    }
+
+    /**
+     * Atualiza dados de solo na interface
+     */
+    updateSoilData() {
+        const soilElements = {
+            'nasa-soil-moisture': this.currentData.soilMoisture,
+            'nasa-soil-temp': this.currentData.soilTemperature,
+            'nasa-organic-matter': this.currentData.organicMatter,
+            'nasa-soil-ph': this.currentData.soilPH,
+            'nasa-soil-salinity': this.currentData.soilSalinity
+        };
+        
+        Object.entries(soilElements).forEach(([id, value]) => {
+            const element = document.getElementById(id);
+            if (element && value !== undefined) {
+                element.textContent = typeof value === 'number' ? value.toFixed(1) : value;
+            }
+        });
+    }
+
+    /**
+     * Atualiza fontes de dados na interface
+     */
+    updateDataSources() {
+        if (this.currentData.dataSources) {
+            const sourceElements = {
+                'climate-source': this.currentData.dataSources.climate,
+                'satellite-source': this.currentData.dataSources.satellite,
+                'soil-source': this.currentData.dataSources.soil
+            };
+            
+            Object.entries(sourceElements).forEach(([id, value]) => {
+                const element = document.getElementById(id);
+                if (element && value) {
+                    element.textContent = value;
+                }
+            });
+        }
+        
+        // Atualiza timestamp da última atualização
+        const lastUpdateElement = document.getElementById('nasa-last-update');
+        if (lastUpdateElement && this.currentData.lastUpdate) {
+            lastUpdateElement.textContent = this.currentData.lastUpdate.toLocaleString('pt-BR');
         }
     }
 

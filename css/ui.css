@@ -1033,6 +1033,90 @@
     background: var(--danger-color);
 }
 
+/* ===== ESTILOS PARA DADOS NASA ===== */
+.nasa-panel .data-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.nasa-panel .data-item i {
+    margin-right: 8px;
+    color: #4CAF50;
+    width: 16px;
+}
+
+/* Estilos para seções de dados NASA */
+.nasa-data-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    border-left: 3px solid #4CAF50;
+}
+
+.nasa-data-section h4 {
+    margin: 0 0 15px 0;
+    color: #4CAF50;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nasa-data-section h4 i {
+    color: #4CAF50;
+}
+
+.data-source {
+    display: block;
+    margin-top: 10px;
+    color: #888;
+    font-style: italic;
+    font-size: 11px;
+}
+
+.data-sources {
+    margin-top: 5px;
+}
+
+.data-sources small {
+    color: #888;
+    font-size: 11px;
+}
+
+/* Cores específicas para diferentes tipos de dados */
+.nasa-data-section:nth-child(2) { /* Clima */
+    border-left-color: #FF9800;
+}
+
+.nasa-data-section:nth-child(2) h4,
+.nasa-data-section:nth-child(2) h4 i {
+    color: #FF9800;
+}
+
+.nasa-data-section:nth-child(3) { /* Satélite */
+    border-left-color: #2196F3;
+}
+
+.nasa-data-section:nth-child(3) h4,
+.nasa-data-section:nth-child(3) h4 i {
+    color: #2196F3;
+}
+
+.nasa-data-section:nth-child(4) { /* Solo */
+    border-left-color: #8BC34A;
+}
+
+.nasa-data-section:nth-child(4) h4,
+.nasa-data-section:nth-child(4) h4 i {
+    color: #8BC34A;
+}
+
 /* ===== RESPONSIVIDADE PARA UI ===== */
 @media (max-width: 768px) {
     .action-buttons {
