@@ -265,3 +265,6 @@ class AgricultureDecisionEngine {
         return this.sustainabilityMetrics;
     }
 }
+
+// Export para uso como módulo ES6
+export { AgricultureDecisionEngine };

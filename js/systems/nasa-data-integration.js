@@ -2,6 +2,8 @@
  * Sistema de Integração de Dados NASA
  * Integra dados reais da NASA para práticas agrícolas educativas e simulação
  */
+import { AgricultureDecisionEngine } from './agriculture-decision-engine.js';
+
 class NASADataIntegration {
     constructor() {
         this.apiEndpoints = {
