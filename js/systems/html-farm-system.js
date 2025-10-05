@@ -789,6 +789,21 @@ class HtmlFarmSystem {
             case 'water-crops':
                 this.handleWaterCropsAction(x, y, plotElement);
                 break;
+            case 'smart-irrigation':
+                this.handleSmartIrrigationAction(x, y, plotElement);
+                break;
+            case 'livestock-management':
+                this.handleLivestockManagementAction(x, y, plotElement);
+                break;
+            case 'environmental-monitoring':
+                this.handleEnvironmentalMonitoringAction(x, y, plotElement);
+                break;
+            case 'precision-fertilization':
+                this.handlePrecisionFertilizationAction(x, y, plotElement);
+                break;
+            case 'crop-rotation':
+                this.handleCropRotationAction(x, y, plotElement);
+                break;
         }
     }
 
@@ -1666,6 +1681,191 @@ class HtmlFarmSystem {
         if (style) {
             style.remove();
         }
+    }
+
+    /**
+     * Manipula ação de irrigação inteligente baseada em dados de umidade do solo
+     */
+    handleSmartIrrigationAction(x, y, plotElement) {
+        const plot = this.getPlot(x, y);
+        if (!plot) return;
+
+        // Verifica dados ambientais da NASA para umidade do solo
+        const nasaData = window.nasaDataIntegration?.getCurrentData() || {};
+        const soilMoisture = nasaData.soilMoisture || 0.3;
+        
+        if (soilMoisture < 0.4) {
+            plot.waterLevel = Math.min(1, plot.waterLevel + 0.6);
+            plot.lastWatered = Date.now();
+            
+            // Aplica irrigação inteligente baseada em dados
+            if (plot.crop) {
+                plot.crop.waterStress = Math.max(0, plot.crop.waterStress - 40);
+                plot.crop.health = Math.min(100, (plot.crop.health || 80) + 15);
+            }
+            
+            this.updatePlotDisplay(plotElement, plot);
+            this.createSmartIrrigationParticles(x, y);
+            this.showActionFeedback(plotElement, 'Irrigação inteligente aplicada!', '#00BFFF');
+        } else {
+            this.showActionFeedback(plotElement, 'Solo já possui umidade adequada!', '#32CD32');
+        }
+    }
+
+    /**
+     * Manipula ação de manejo de gado integrado com dados ambientais
+     */
+    handleLivestockManagementAction(x, y, plotElement) {
+        const plot = this.getPlot(x, y);
+        if (!plot) return;
+
+        // Verifica condições ambientais para manejo de gado
+        const nasaData = window.nasaDataIntegration?.getCurrentData() || {};
+        const temperature = nasaData.temperature || 25;
+        const humidity = nasaData.humidity || 60;
+        
+        // Aplica manejo baseado nas condições
+        plot.livestockHealth = (plot.livestockHealth || 80) + 10;
+        plot.soilFertility = Math.min(1, (plot.soilFertility || 0.5) + 0.2);
+        
+        if (plot.crop) {
+            plot.crop.health = Math.min(100, (plot.crop.health || 80) + 8);
+        }
+        
+        this.updatePlotDisplay(plotElement, plot);
+        this.createLivestockParticles(x, y);
+        this.showActionFeedback(plotElement, 'Manejo de gado aplicado!', '#8B4513');
+    }
+
+    /**
+     * Manipula ação de monitoramento ambiental
+     */
+    handleEnvironmentalMonitoringAction(x, y, plotElement) {
+        const plot = this.getPlot(x, y);
+        if (!plot) return;
+
+        // Coleta dados ambientais da NASA
+        const nasaData = window.nasaDataIntegration?.getCurrentData() || {};
+        
+        plot.environmentalData = {
+            temperature: nasaData.temperature || 25,
+            humidity: nasaData.humidity || 60,
+            soilMoisture: nasaData.soilMoisture || 0.3,
+            windSpeed: nasaData.windSpeed || 5,
+            lastMonitored: Date.now()
+        };
+        
+        // Aplica otimizações baseadas no monitoramento
+        if (plot.crop) {
+            const optimalTemp = plot.crop.optimalTemperature || 25;
+            const tempDiff = Math.abs(plot.environmentalData.temperature - optimalTemp);
+            
+            if (tempDiff < 5) {
+                plot.crop.health = Math.min(100, (plot.crop.health || 80) + 12);
+            }
+        }
+        
+        this.updatePlotDisplay(plotElement, plot);
+        this.createMonitoringParticles(x, y);
+        this.showActionFeedback(plotElement, 'Monitoramento ambiental realizado!', '#FFD700');
+    }
+
+    /**
+     * Manipula ação de fertilização de precisão baseada em dados do solo
+     */
+    handlePrecisionFertilizationAction(x, y, plotElement) {
+        const plot = this.getPlot(x, y);
+        if (!plot) return;
+
+        // Analisa dados do solo para fertilização precisa
+        const nasaData = window.nasaDataIntegration?.getCurrentData() || {};
+        const soilQuality = nasaData.soilQuality || 0.5;
+        
+        if (soilQuality < 0.7) {
+            const fertilizationAmount = (0.7 - soilQuality) * 0.8;
+            plot.soilFertility = Math.min(1, (plot.soilFertility || 0.5) + fertilizationAmount);
+            plot.lastFertilized = Date.now();
+            
+            if (plot.crop) {
+                plot.crop.health = Math.min(100, (plot.crop.health || 80) + 20);
+                plot.crop.growthRate = (plot.crop.growthRate || 1) * 1.3;
+            }
+            
+            this.updatePlotDisplay(plotElement, plot);
+            this.createPrecisionFertilizationParticles(x, y);
+            this.showActionFeedback(plotElement, 'Fertilização de precisão aplicada!', '#8A2BE2');
+        } else {
+            this.showActionFeedback(plotElement, 'Solo já possui nutrientes adequados!', '#32CD32');
+        }
+    }
+
+    /**
+     * Manipula ação de rotação de culturas
+     */
+    handleCropRotationAction(x, y, plotElement) {
+        const plot = this.getPlot(x, y);
+        if (!plot) return;
+
+        if (plot.crop && plot.crop.stage === 'ready') {
+            // Colhe a cultura atual
+            const cropYield = plot.crop.calculateYield();
+            
+            // Aplica benefícios da rotação
+            plot.soilFertility = Math.min(1, (plot.soilFertility || 0.5) + 0.15);
+            plot.rotationBonus = (plot.rotationBonus || 1) + 0.1;
+            
+            // Remove a cultura atual
+            plot.crop = null;
+            plot.cropType = null;
+            
+            this.updatePlotDisplay(plotElement, plot);
+            this.createRotationParticles(x, y);
+            this.showActionFeedback(plotElement, `Rotação realizada! +${cropYield} unidades`, '#FF8C00');
+            
+            // Atualiza recursos
+            if (window.gameState && window.gameState.resources) {
+                window.gameState.resources.crops = (window.gameState.resources.crops || 0) + cropYield;
+            }
+        } else {
+            this.showActionFeedback(plotElement, 'Cultura não está pronta para rotação!', '#FF6347');
+        }
+    }
+
+    // Métodos para criar partículas das novas ações
+
+    /**
+     * Cria partículas de irrigação inteligente
+     */
+    createSmartIrrigationParticles(x, y) {
+        this.createParticles(x, y, '#00BFFF', 8);
+    }
+
+    /**
+     * Cria partículas de manejo de gado
+     */
+    createLivestockParticles(x, y) {
+        this.createParticles(x, y, '#8B4513', 6);
+    }
+
+    /**
+     * Cria partículas de monitoramento ambiental
+     */
+    createMonitoringParticles(x, y) {
+        this.createParticles(x, y, '#FFD700', 10);
+    }
+
+    /**
+     * Cria partículas de fertilização de precisão
+     */
+    createPrecisionFertilizationParticles(x, y) {
+        this.createParticles(x, y, '#8A2BE2', 7);
+    }
+
+    /**
+     * Cria partículas de rotação de culturas
+     */
+    createRotationParticles(x, y) {
+        this.createParticles(x, y, '#FF8C00', 9);
     }
 }
 

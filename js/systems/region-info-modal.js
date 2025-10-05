@@ -270,129 +270,167 @@ class RegionInfoModal {
     }
 
     /**
-     * Obtém dados simulados da região baseado no ID
-     * @param {string} regionId - ID da região
-     * @returns {Object} Dados da região
+     * Obtém dados específicos de um país para exibição no modal
+     * @param {string} regionId - ID do país
+     * @returns {Object} Dados do país
      */
     static getRegionData(regionId) {
         const regionsData = {
-            'north-america': {
-                name: 'América do Norte',
-                description: 'Região com vastas planícies férteis e tecnologia agrícola avançada. Ideal para cultivos de grãos em larga escala.',
+            'brazil': {
+                name: 'Brasil',
+                description: 'Maior produtor mundial de soja e café, com vastas áreas agrícolas no Cerrado e Amazônia.',
                 climate: {
-                    type: 'temperate',
+                    type: 'tropical',
+                    avgTemp: 25,
+                    rainfall: 1200,
+                    humidity: 70,
+                    growingSeason: '8-10 meses'
+                },
+                specialties: ['Soja', 'Café', 'Cana-de-açúcar'],
+                bonus: { type: 'Biodiversidade', value: '+25%' },
+                nasaData: {
+                    soilQuality: 85,
+                    waterAvailability: 80,
+                    solarRadiation: 90,
+                    carbonContent: 75
+                }
+            },
+            'usa': {
+                name: 'Estados Unidos',
+                description: 'Líder mundial em produção de milho e tecnologia agrícola avançada.',
+                climate: {
+                    type: 'continental',
                     avgTemp: 18,
-                    rainfall: 900,
+                    rainfall: 700,
                     humidity: 60,
                     growingSeason: '6-8 meses'
                 },
-                specialties: ['Milho', 'Soja', 'Trigo', 'Algodão'],
-                bonus: { type: 'Eficiência', value: '+20%' },
+                specialties: ['Milho', 'Soja', 'Trigo'],
+                bonus: { type: 'Tecnologia', value: '+30%' },
                 nasaData: {
-                    soilQuality: 85,
+                    soilQuality: 88,
                     waterAvailability: 75,
                     solarRadiation: 80,
                     carbonContent: 70
                 }
             },
-            'south-america': {
-                name: 'América do Sul',
-                description: 'Rica em biodiversidade com clima tropical favorável. Excelente para cultivos sustentáveis e agricultura orgânica.',
+            'china': {
+                name: 'China',
+                description: 'Maior produtor mundial de arroz e líder em agricultura intensiva.',
                 climate: {
-                    type: 'tropical',
-                    avgTemp: 26,
-                    rainfall: 1200,
-                    humidity: 75,
-                    growingSeason: '10-12 meses'
-                },
-                specialties: ['Café', 'Cacau', 'Soja', 'Cana-de-açúcar'],
-                bonus: { type: 'Sustentabilidade', value: '+25%' },
-                nasaData: {
-                    soilQuality: 80,
-                    waterAvailability: 90,
-                    solarRadiation: 95,
-                    carbonContent: 85
-                }
-            },
-            'europe': {
-                name: 'Europa',
-                description: 'Região com tradição agrícola milenar e foco em qualidade. Ideal para cultivos especializados e agricultura de precisão.',
-                climate: {
-                    type: 'temperate',
-                    avgTemp: 15,
-                    rainfall: 700,
-                    humidity: 65,
-                    growingSeason: '6-7 meses'
-                },
-                specialties: ['Trigo', 'Cevada', 'Beterraba', 'Girassol'],
-                bonus: { type: 'Qualidade', value: '+30%' },
-                nasaData: {
-                    soilQuality: 90,
-                    waterAvailability: 70,
-                    solarRadiation: 65,
-                    carbonContent: 75
-                }
-            },
-            'asia': {
-                name: 'Ásia',
-                description: 'Berço da agricultura com técnicas milenares. Excelente para cultivos intensivos e inovação tecnológica.',
-                climate: {
-                    type: 'continental',
-                    avgTemp: 20,
-                    rainfall: 1000,
+                    type: 'subtropical',
+                    avgTemp: 22,
+                    rainfall: 900,
                     humidity: 70,
                     growingSeason: '8-10 meses'
                 },
-                specialties: ['Arroz', 'Chá', 'Soja', 'Milho'],
-                bonus: { type: 'Produtividade', value: '+35%' },
+                specialties: ['Arroz', 'Trigo', 'Milho'],
+                bonus: { type: 'Intensidade', value: '+35%' },
+                nasaData: {
+                    soilQuality: 82,
+                    waterAvailability: 78,
+                    solarRadiation: 85,
+                    carbonContent: 68
+                }
+            },
+            'india': {
+                name: 'Índia',
+                description: 'Segundo maior produtor mundial de arroz e trigo, com agricultura baseada em monções.',
+                climate: {
+                    type: 'tropical',
+                    avgTemp: 30,
+                    rainfall: 1100,
+                    humidity: 78,
+                    growingSeason: '6-8 meses'
+                },
+                specialties: ['Arroz', 'Trigo', 'Algodão'],
+                bonus: { type: 'Monções', value: '+20%' },
+                nasaData: {
+                    soilQuality: 80,
+                    waterAvailability: 85,
+                    solarRadiation: 88,
+                    carbonContent: 72
+                }
+            },
+            'argentina': {
+                name: 'Argentina',
+                description: 'Grande exportador de carne bovina e soja, com os férteis Pampas.',
+                climate: {
+                    type: 'subtropical',
+                    avgTemp: 17,
+                    rainfall: 800,
+                    humidity: 68,
+                    growingSeason: '7-9 meses'
+                },
+                specialties: ['Soja', 'Trigo', 'Carne Bovina'],
+                bonus: { type: 'Pampas', value: '+25%' },
+                nasaData: {
+                    soilQuality: 92,
+                    waterAvailability: 75,
+                    solarRadiation: 82,
+                    carbonContent: 85
+                }
+            },
+            'australia': {
+                name: 'Austrália',
+                description: 'Líder em agricultura sustentável e adaptada ao clima seco.',
+                climate: {
+                    type: 'mediterranean',
+                    avgTemp: 23,
+                    rainfall: 450,
+                    humidity: 50,
+                    growingSeason: '7-9 meses'
+                },
+                specialties: ['Trigo', 'Cevada', 'Carne Bovina'],
+                bonus: { type: 'Sustentabilidade', value: '+30%' },
                 nasaData: {
                     soilQuality: 75,
-                    waterAvailability: 85,
+                    waterAvailability: 55,
                     solarRadiation: 90,
                     carbonContent: 65
                 }
             },
-            'africa': {
-                name: 'África',
-                description: 'Continente com grande potencial agrícola e diversidade climática. Ideal para cultivos resistentes e sustentáveis.',
+            'canada': {
+                name: 'Canadá',
+                description: 'Grande produtor de trigo e canola, com agricultura adaptada ao clima frio.',
                 climate: {
-                    type: 'arid',
-                    avgTemp: 28,
-                    rainfall: 600,
-                    humidity: 55,
-                    growingSeason: '6-9 meses'
+                    type: 'continental',
+                    avgTemp: 12,
+                    rainfall: 500,
+                    humidity: 60,
+                    growingSeason: '4-6 meses'
                 },
-                specialties: ['Sorgo', 'Milheto', 'Mandioca', 'Café'],
-                bonus: { type: 'Resistência', value: '+40%' },
+                specialties: ['Trigo', 'Canola', 'Cevada'],
+                bonus: { type: 'Clima Frio', value: '+20%' },
                 nasaData: {
-                    soilQuality: 65,
-                    waterAvailability: 60,
-                    solarRadiation: 100,
-                    carbonContent: 55
+                    soilQuality: 85,
+                    waterAvailability: 70,
+                    solarRadiation: 65,
+                    carbonContent: 78
                 }
             },
-            'oceania': {
-                name: 'Oceania',
-                description: 'Região insular com condições únicas para agricultura. Foco em sustentabilidade e cultivos especializados.',
+            'russia': {
+                name: 'Rússia',
+                description: 'Maior país do mundo com vastas áreas de cultivo de trigo e cevada.',
                 climate: {
-                    type: 'mediterranean',
-                    avgTemp: 22,
-                    rainfall: 800,
-                    humidity: 68,
-                    growingSeason: '9-11 meses'
+                    type: 'continental',
+                    avgTemp: 9,
+                    rainfall: 400,
+                    humidity: 65,
+                    growingSeason: '4-5 meses'
                 },
-                specialties: ['Trigo', 'Cevada', 'Frutas', 'Vinho'],
-                bonus: { type: 'Qualidade', value: '+25%' },
+                specialties: ['Trigo', 'Cevada', 'Aveia'],
+                bonus: { type: 'Extensão', value: '+40%' },
                 nasaData: {
-                    soilQuality: 78,
-                    waterAvailability: 72,
-                    solarRadiation: 88,
-                    carbonContent: 68
+                    soilQuality: 80,
+                    waterAvailability: 65,
+                    solarRadiation: 60,
+                    carbonContent: 82
                 }
             }
         };
 
-        return regionsData[regionId] || regionsData['north-america'];
+        return regionsData[regionId] || regionsData['brazil'];
     }
 }
 

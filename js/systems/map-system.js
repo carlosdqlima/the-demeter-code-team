@@ -246,14 +246,21 @@ class MapSystem {
         
         for (const [regionId, regionData] of this.regions) {
             try {
-                const imagery = await this.nasaApi.getEarthImagery(
-                    regionData.center.lat,
-                    regionData.center.lng
-                );
+                // Valida coordenadas da região
+                if (!regionData.center || !Array.isArray(regionData.center) || 
+                    regionData.center.length !== 2) {
+                    console.warn(`Coordenadas inválidas para região ${regionId}:`, regionData.center);
+                    continue;
+                }
+                
+                const [lat, lng] = regionData.center; // [lat, lng] no regions-data.js
+                
+                const imagery = await this.nasaApi.getEarthImagery(lat, lng);
                 
                 satelliteData.push({
                     regionId,
-                    ...regionData.center,
+                    lat,
+                    lng,
                     imagery
                 });
             } catch (error) {
@@ -391,6 +398,13 @@ class MapSystem {
         
         satelliteData.forEach(point => {
             if (point.imagery && point.imagery.url) {
+                // Valida coordenadas antes de criar o marcador
+                if (isNaN(point.lng) || isNaN(point.lat) || 
+                    point.lng === undefined || point.lat === undefined) {
+                    console.warn(`Coordenadas inválidas para ponto de satélite:`, point);
+                    return;
+                }
+                
                 const markerElement = document.createElement('div');
                 markerElement.className = 'nasa-satellite-marker';
                 markerElement.innerHTML = '<i class="fas fa-satellite"></i>';
@@ -562,9 +576,20 @@ class MapSystem {
      * Carrega dados das regiões agrícolas
      */
     async loadRegions() {
-        const regionsConfig = getConfig('regions');
+        // Usa regionsConfig do arquivo regions-data.js em vez do GameConfig
+        const regionsData = window.regionsConfig || {};
         
-        for (const [regionId, regionData] of Object.entries(regionsConfig)) {
+        for (const [regionId, regionData] of Object.entries(regionsData)) {
+            // Valida se as coordenadas são válidas
+            if (!regionData.center || 
+                !Array.isArray(regionData.center) || 
+                regionData.center.length !== 2 ||
+                isNaN(regionData.center[0]) || 
+                isNaN(regionData.center[1])) {
+                console.warn(`Coordenadas inválidas para região ${regionId}:`, regionData.center);
+                continue;
+            }
+            
             // Cria marcador para a região
             const marker = this.createRegionMarker(regionId, regionData);
             this.markers.set(regionId, marker);
@@ -1199,29 +1224,7 @@ class MapSystem {
         return labels[bonusType] || bonusType;
     }
     
-    /**
-     * Seleciona região (método estático para uso em HTML)
-     * @param {string} regionId - ID da região
-     */
-    static selectRegion(regionId) {
-        if (window.gameInstance && window.gameInstance.mapSystem) {
-            const regionData = window.gameInstance.mapSystem.regions.get(regionId);
-            if (regionData) {
-                window.gameInstance.mapSystem.onRegionClick(regionId, regionData);
-            }
-        }
-    }
-    
-    /**
-     * Cria fazenda (método estático para uso em HTML)
-     * @param {number} lat - Latitude
-     * @param {number} lng - Longitude
-     */
-    static createFarm(lat, lng) {
-        if (window.gameInstance && window.gameInstance.mapSystem) {
-            window.gameInstance.mapSystem.createFarm(lat, lng);
-        }
-    }
+
     
     /**
      * Atualiza o sistema de mapa (chamado pelo game loop)
@@ -1266,4 +1269,28 @@ class MapSystem {
 // Exporta a classe globalmente
 if (typeof window !== 'undefined') {
     window.MapSystem = MapSystem;
+    
+    /**
+     * Função global para selecionar região (para uso em HTML)
+     * @param {string} regionId - ID da região
+     */
+    window.selectRegion = function(regionId) {
+        if (window.gameInstance && window.gameInstance.mapSystem) {
+            const regionData = window.gameInstance.mapSystem.regions.get(regionId);
+            if (regionData) {
+                window.gameInstance.mapSystem.onRegionClick(regionId, regionData);
+            }
+        }
+    };
+    
+    /**
+     * Função global para criar fazenda (para uso em HTML)
+     * @param {number} lat - Latitude
+     * @param {number} lng - Longitude
+     */
+    window.createFarm = function(lat, lng) {
+        if (window.gameInstance && window.gameInstance.mapSystem) {
+            window.gameInstance.mapSystem.createFarm(lat, lng);
+        }
+    };
 }

@@ -1,84 +1,110 @@
 /**
- * Dados das Regiões Agrícolas - NASA Farm Navigators
- * Configurações das regiões disponíveis para agricultura
+ * Configuração dos principais países do mundo
+ * Dados dos países com maior potencial agrícola global
  */
 
 const regionsConfig = {
-    'great-plains': {
-        name: 'Grandes Planícies',
-        center: [39.8283, -98.5795], // [lat, lng] - Kansas, EUA
-        climate: 'continental',
-        specialties: ['trigo', 'milho', 'soja'],
-        bonus: { yield: 0.15 },
-        description: 'Região ideal para cultivo de grãos com vastas planícies férteis.',
-        soilQuality: 85,
-        waterAvailability: 70,
-        averageTemp: 12,
-        rainfall: 600
-    },
-    
-    'pampas': {
-        name: 'Pampas',
-        center: [-34.6037, -58.3816], // [lat, lng] - Buenos Aires, Argentina
-        climate: 'subtropical',
-        specialties: ['soja', 'trigo', 'milho'],
-        bonus: { yield: 0.12 },
-        description: 'Planícies férteis da América do Sul, ideais para agricultura extensiva.',
-        soilQuality: 90,
-        waterAvailability: 75,
-        averageTemp: 16,
-        rainfall: 800
-    },
-    
-    'nile-delta': {
-        name: 'Delta do Nilo',
-        center: [30.0444, 31.2357], // [lat, lng] - Cairo, Egito
-        climate: 'arid',
-        specialties: ['arroz', 'algodão', 'trigo'],
-        bonus: { water_efficiency: 0.20 },
-        description: 'Região histórica de agricultura irrigada no Egito.',
-        soilQuality: 80,
-        waterAvailability: 60,
-        averageTemp: 22,
-        rainfall: 200
-    },
-    
-    'ganges-plain': {
-        name: 'Planície do Ganges',
-        center: [26.8467, 80.9462], // [lat, lng] - Lucknow, Índia
+    'brazil': {
+        name: 'Brasil',
+        center: [-14.2350, -51.9253], // [lat, lng] - Centro do Brasil
         climate: 'tropical',
-        specialties: ['arroz', 'trigo', 'cana-de-açúcar'],
-        bonus: { yield: 0.18 },
-        description: 'Uma das regiões mais férteis do mundo, ideal para arroz.',
-        soilQuality: 95,
-        waterAvailability: 85,
+        specialties: ['soja', 'milho', 'café', 'cana-de-açúcar'],
+        bonus: { yield: 0.20 },
+        description: 'Maior produtor agrícola da América do Sul, líder mundial em soja e café.',
+        soilQuality: 85,
+        waterAvailability: 80,
         averageTemp: 25,
         rainfall: 1200
     },
     
-    'ukraine-plains': {
-        name: 'Planícies da Ucrânia',
-        center: [49.8397, 24.0297], // [lat, lng] - Lviv, Ucrânia
+    'usa': {
+        name: 'Estados Unidos',
+        center: [39.8283, -98.5795], // [lat, lng] - Centro dos EUA
         climate: 'continental',
-        specialties: ['trigo', 'milho', 'girassol'],
-        bonus: { yield: 0.14 },
-        description: 'Terra negra fértil, conhecida como o celeiro da Europa.',
-        soilQuality: 92,
-        waterAvailability: 65,
-        averageTemp: 8,
-        rainfall: 550
+        specialties: ['milho', 'soja', 'trigo', 'algodão'],
+        bonus: { technology: 0.25 },
+        description: 'Líder mundial em tecnologia agrícola e produção de milho.',
+        soilQuality: 90,
+        waterAvailability: 75,
+        averageTemp: 15,
+        rainfall: 700
     },
     
-    'murray-darling': {
-        name: 'Murray-Darling',
-        center: [-34.9285, 138.6007], // [lat, lng] - Adelaide, Austrália
-        climate: 'mediterranean',
-        specialties: ['trigo', 'cevada', 'uva'],
-        bonus: { drought_resistance: 0.16 },
-        description: 'Principal região agrícola da Austrália.',
-        soilQuality: 75,
-        waterAvailability: 55,
+    'china': {
+        name: 'China',
+        center: [35.8617, 104.1954], // [lat, lng] - Centro da China
+        climate: 'continental',
+        specialties: ['arroz', 'trigo', 'milho', 'soja'],
+        bonus: { efficiency: 0.18 },
+        description: 'Maior produtor mundial de arroz e trigo, agricultura intensiva.',
+        soilQuality: 80,
+        waterAvailability: 70,
         averageTemp: 18,
+        rainfall: 800
+    },
+    
+    'india': {
+        name: 'Índia',
+        center: [20.5937, 78.9629], // [lat, lng] - Centro da Índia
+        climate: 'tropical',
+        specialties: ['arroz', 'trigo', 'algodão', 'cana-de-açúcar'],
+        bonus: { diversity: 0.22 },
+        description: 'Segundo maior produtor mundial de arroz e trigo.',
+        soilQuality: 75,
+        waterAvailability: 65,
+        averageTemp: 26,
+        rainfall: 1100
+    },
+    
+    'argentina': {
+        name: 'Argentina',
+        center: [-38.4161, -63.6167], // [lat, lng] - Centro da Argentina
+        climate: 'temperate',
+        specialties: ['soja', 'trigo', 'milho', 'carne'],
+        bonus: { quality: 0.16 },
+        description: 'Grandes planícies férteis, importante exportador de grãos.',
+        soilQuality: 88,
+        waterAvailability: 70,
+        averageTemp: 16,
+        rainfall: 600
+    },
+    
+    'australia': {
+        name: 'Austrália',
+        center: [-25.2744, 133.7751], // [lat, lng] - Centro da Austrália
+        climate: 'arid',
+        specialties: ['trigo', 'cevada', 'carne', 'lã'],
+        bonus: { sustainability: 0.14 },
+        description: 'Agricultura adaptada ao clima seco, foco em sustentabilidade.',
+        soilQuality: 70,
+        waterAvailability: 50,
+        averageTemp: 22,
+        rainfall: 400
+    },
+    
+    'canada': {
+        name: 'Canadá',
+        center: [56.1304, -106.3468], // [lat, lng] - Centro do Canadá
+        climate: 'continental',
+        specialties: ['trigo', 'canola', 'cevada', 'aveia'],
+        bonus: { cold_resistance: 0.15 },
+        description: 'Grandes extensões de terra cultivável, especialista em grãos.',
+        soilQuality: 85,
+        waterAvailability: 80,
+        averageTemp: 8,
+        rainfall: 500
+    },
+    
+    'russia': {
+        name: 'Rússia',
+        center: [61.5240, 105.3188], // [lat, lng] - Centro da Rússia
+        climate: 'continental',
+        specialties: ['trigo', 'cevada', 'aveia', 'girassol'],
+        bonus: { expansion: 0.17 },
+        description: 'Vastas terras cultiváveis, maior exportador mundial de trigo.',
+        soilQuality: 80,
+        waterAvailability: 75,
+        averageTemp: 5,
         rainfall: 450
     }
 };
