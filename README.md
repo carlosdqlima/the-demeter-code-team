@@ -305,13 +305,6 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 - **Leaflet.js**: Pela biblioteca de mapas
 - **Comunidade Open Source**: Por todas as bibliotecas utilizadas
 
-## 📞 Contato
-
-- **Desenvolvedor**: Seu Nome
-- **Email**: seu.email@exemplo.com
-- **GitHub**: [@seu-usuario](https://github.com/seu-usuario)
-- **LinkedIn**: [Seu Perfil](https://linkedin.com/in/seu-perfil)
-
 ---
 
 **🌍 Construindo o futuro da agricultura com dados da NASA! 🚀**
