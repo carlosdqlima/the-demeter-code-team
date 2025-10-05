@@ -1,6 +1,6 @@
 /**
- * Dados das Culturas - NASA Farm Navigators
- * Configurações das culturas disponíveis para plantio
+ * Crops Data - NASA Farm Navigators
+ * Configuration of crops available for planting
  */
 
 const cropsData = {
@@ -22,7 +22,7 @@ const cropsData = {
         },
         climate: ['continental', 'temperado'],
         season: 'inverno',
-        description: 'Cereal básico para alimentação humana, adaptado a climas temperados.'
+        description: 'Basic cereal for human consumption, adapted to temperate climates.'
     },
     
     'milho': {
@@ -43,7 +43,7 @@ const cropsData = {
         },
         climate: ['continental', 'subtropical'],
         season: 'verão',
-        description: 'Cereal versátil usado para alimentação humana e animal.'
+        description: 'Versatile cereal used for human and animal consumption.'
     },
     
     'soja': {
@@ -64,7 +64,7 @@ const cropsData = {
         },
         climate: ['subtropical', 'tropical'],
         season: 'verão',
-        description: 'Leguminosa rica em proteínas, fixa nitrogênio no solo.'
+        description: 'Protein-rich legume that fixes nitrogen in soil.'
     },
     
     'arroz': {
@@ -85,11 +85,11 @@ const cropsData = {
         },
         climate: ['tropical', 'subtropical'],
         season: 'verão',
-        description: 'Cereal básico para mais da metade da população mundial.'
+        description: 'Basic cereal for more than half of the world population.'
     },
     
     'algodão': {
-        name: 'Algodão',
+        name: 'Cotton',
         icon: 'assets/images/crops/cotton.svg',
         category: 'fibras',
         growthTime: 180,
@@ -106,7 +106,7 @@ const cropsData = {
         },
         climate: ['subtropical', 'árido'],
         season: 'verão',
-        description: 'Fibra natural importante para a indústria têxtil.'
+        description: 'Important natural fiber for textile industry.'
     },
     
     'cana-de-açúcar': {

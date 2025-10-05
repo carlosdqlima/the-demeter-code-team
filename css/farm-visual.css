@@ -1,6 +1,6 @@
-/* ===== SISTEMA VISUAL DE FAZENDAS ===== */
+/* ===== FARM CARE ===== */
 
-/* Toggle de Visualização */
+/* Visualization Toggle */
 .view-toggle {
     position: absolute;
     top: 20px;
@@ -123,7 +123,7 @@
     box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
 }
 
-/* Informações da Fazenda */
+/* Farm Information */
 .farm-info-overlay {
     position: absolute;
     top: 80px;
@@ -223,7 +223,7 @@
     font-size: 11px;
 }
 
-/* Animações de Partículas */
+/* Particle Animations */
 @keyframes particle-float {
     0% {
         transform: translateY(0) scale(1);

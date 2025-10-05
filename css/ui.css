@@ -1,6 +1,6 @@
-/* ===== ELEMENTOS DE UI ESPECÍFICOS ===== */
+/* ===== SPECIFIC UI ELEMENTS ===== */
 
-/* ===== MAPA MUNDIAL ===== */
+/* ===== WORLD MAP ===== */
 .world-map-panel {
     height: 400px;
     background: var(--bg-secondary);
@@ -29,7 +29,7 @@
     overflow: hidden;
 }
 
-/* ===== MARCADORES DE REGIÃO ===== */
+/* ===== REGION MARKERS ===== */
 .region-marker {
     background: transparent !important;
     border: none !important;
@@ -72,7 +72,7 @@
     font-weight: 600;
 }
 
-/* ===== POPUPS DO MAPA ===== */
+/* ===== POPUPS ===== */
 .region-popup .maplibregl-popup-content {
     background: var(--bg-primary);
     border-radius: var(--border-radius);
@@ -177,7 +177,7 @@
     font-size: 0.85rem;
 }
 
-/* ===== CONTROLES DE NAVEGAÇÃO MAPLIBRE ===== */
+/* ===== NAVIGATION CONTROLS ===== */
 .maplibregl-ctrl-group {
     border-radius: 8px !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
@@ -202,7 +202,7 @@
     border-bottom: 1px solid var(--orbital-blue) !important;
 }
 
-/* ===== MARCADORES DE REGIÃO MAPLIBRE ===== */
+/* ===== MAPLIBRE REGION MARKERS ===== */
 .region-marker {
     cursor: pointer;
     transition: all 0.3s ease;
@@ -236,7 +236,7 @@
     white-space: nowrap;
 }
 
-/* ===== MODAL DE INFORMAÇÕES DA REGIÃO ===== */
+/* ===== REGION INFORMATION MODAL ===== */
 .region-info-modal {
     position: fixed;
     top: 0;
@@ -635,7 +635,7 @@
     background: var(--climate-poor);
 }
 
-/* ===== BOTÕES DE AÇÃO ===== */
+/* ===== ACTION BUTTONS ===== */
 .action-buttons {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -801,7 +801,7 @@
     animation: pulse 1.5s infinite;
 }
 
-/* ===== PREÇOS DO MERCADO ===== */
+/* ===== MARKET PRICES ===== */
 .market-prices {
     display: flex;
     flex-direction: column;
@@ -876,7 +876,7 @@
     color: var(--text-muted);
 }
 
-/* ===== MODAIS ===== */
+/* ===== MODALS ===== */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -968,7 +968,7 @@
     opacity: 1;
 }
 
-/* ===== NOTIFICAÇÕES ===== */
+/* ===== NOTIFICATIONS ===== */
 .notification {
     position: fixed;
     top: 80px;
@@ -1049,7 +1049,7 @@
     width: 16px;
 }
 
-/* Estilos para seções de dados NASA */
+/* Styles for NASA data sections */
 .nasa-data-section {
     margin-bottom: 20px;
     padding: 15px;
@@ -1089,7 +1089,7 @@
     font-size: 11px;
 }
 
-/* Cores específicas para diferentes tipos de dados */
+/* Specific colors for different data types */
 .nasa-data-section:nth-child(2) { /* Clima */
     border-left-color: #FF9800;
 }
@@ -1099,7 +1099,7 @@
     color: #FF9800;
 }
 
-.nasa-data-section:nth-child(3) { /* Satélite */
+.nasa-data-section:nth-child(3) { /* Satellite */
     border-left-color: #2196F3;
 }
 

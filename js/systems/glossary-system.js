@@ -12,91 +12,91 @@ class GlossarySystem {
     }
 
     /**
-     * Inicializa os dados do glossário com informações regionais
+     * Initializes glossary data with regional information
      */
     initializeGlossaryData() {
         return {
             global: {
-                title: "Informações Globais",
-                description: "Dados gerais sobre agricultura sustentável e tecnologias da NASA",
+                title: "Global Information",
+                description: "General data about sustainable agriculture and NASA technologies",
                 items: [
                     {
-                        term: "Agricultura de Precisão",
-                        definition: "Uso de tecnologia para otimizar o rendimento das culturas e reduzir o desperdício",
-                        nasaData: "Dados de satélite MODIS para monitoramento de culturas"
+                        term: "Precision Agriculture",
+                        definition: "Use of technology to optimize crop yield and reduce waste",
+                        nasaData: "MODIS satellite data for crop monitoring"
                     },
                     {
-                        term: "Índice de Vegetação (NDVI)",
-                        definition: "Medida da saúde da vegetação usando dados de satélite",
-                        nasaData: "Calculado usando bandas vermelha e infravermelha próxima"
+                        term: "Vegetation Index (NDVI)",
+                        definition: "Measure of vegetation health using satellite data",
+                        nasaData: "Calculated using red and near-infrared bands"
                     },
                     {
-                        term: "Umidade do Solo",
-                        definition: "Quantidade de água presente no solo, crucial para o crescimento das plantas",
-                        nasaData: "Monitorada pelo satélite SMAP da NASA"
+                        term: "Soil Moisture",
+                        definition: "Amount of water present in soil, crucial for plant growth",
+                        nasaData: "Monitored by NASA's SMAP satellite"
                     }
                 ]
             },
             brazil: {
-                title: "Brasil - Região Tropical",
-                description: "Informações específicas para agricultura tropical brasileira",
+                title: "Brazil - Tropical Region",
+                description: "Specific information for Brazilian tropical agriculture",
                 items: [
                     {
                         term: "Cerrado",
-                        definition: "Bioma brasileiro ideal para agricultura de grãos como soja e milho",
-                        nasaData: "Monitorado por satélites Landsat para desmatamento"
+                        definition: "Brazilian biome ideal for grain agriculture like soy and corn",
+                        nasaData: "Monitored by Landsat satellites for deforestation"
                     },
                     {
-                        term: "Agricultura Tropical",
-                        definition: "Técnicas adaptadas ao clima quente e úmido",
-                        nasaData: "Dados de precipitação do GPM (Global Precipitation Measurement)"
+                        term: "Tropical Agriculture",
+                        definition: "Techniques adapted to hot and humid climate",
+                        nasaData: "Precipitation data from GPM (Global Precipitation Measurement)"
                     },
                     {
-                        term: "Rotação de Culturas",
-                        definition: "Alternância de diferentes culturas para manter a fertilidade do solo",
-                        nasaData: "Análise temporal usando imagens MODIS"
+                        term: "Crop Rotation",
+                        definition: "Alternating different crops to maintain soil fertility",
+                        nasaData: "Temporal analysis using MODIS images"
                     }
                 ]
             },
             usa: {
-                title: "Estados Unidos - Região Temperada",
-                description: "Informações para agricultura em clima temperado",
+                title: "United States - Temperate Region",
+                description: "Information for agriculture in temperate climate",
                 items: [
                     {
                         term: "Corn Belt",
-                        definition: "Região dos EUA especializada no cultivo de milho e soja",
-                        nasaData: "Monitoramento de produtividade via MODIS e Landsat"
+                        definition: "US region specialized in corn and soybean cultivation",
+                        nasaData: "Productivity monitoring via MODIS and Landsat"
                     },
                     {
-                        term: "Agricultura de Sequeiro",
-                        definition: "Cultivo dependente apenas da precipitação natural",
-                        nasaData: "Dados de precipitação e umidade do solo SMAP"
+                        term: "Dryland Agriculture",
+                        definition: "Cultivation dependent only on natural precipitation",
+                        nasaData: "Precipitation and soil moisture data from SMAP"
                     },
                     {
-                        term: "Manejo Integrado de Pragas",
-                        definition: "Estratégia sustentável para controle de pragas",
-                        nasaData: "Detecção de estresse em culturas via sensoriamento remoto"
+                        term: "Integrated Pest Management",
+                        definition: "Sustainable strategy for pest control",
+                        nasaData: "Crop stress detection via remote sensing"
                     }
                 ]
             },
             africa: {
-                title: "África - Região Árida/Semiárida",
-                description: "Técnicas para agricultura em regiões com escassez de água",
+                title: "Africa - Arid/Semi-arid Region",
+                description: "Techniques for agriculture in water-scarce regions",
                 items: [
                     {
-                        term: "Agricultura de Subsistência",
-                        definition: "Cultivo para alimentação familiar e local",
-                        nasaData: "Monitoramento de secas via dados GRACE"
+                        term: "Subsistence Agriculture",
+                        definition: "Cultivation for family and local food supply",
+                        nasaData: "Drought monitoring via GRACE data"
                     },
                     {
-                        term: "Irrigação por Gotejamento",
-                        definition: "Técnica eficiente de irrigação para regiões áridas",
-                        nasaData: "Otimização usando dados de evapotranspiração MODIS"
+                        term: "Drip Irrigation",
+                        definition: "Efficient irrigation technique for arid regions",
+                        nasaData: "Optimization using MODIS evapotranspiration data"
                     },
                     {
-                        term: "Culturas Resistentes à Seca",
-                        definition: "Plantas adaptadas a condições de baixa precipitação",
-                        nasaData: "Identificação de variedades via análise espectral"
+                        term: "Drought-Resistant Crops",
+                        definition: "Plants adapted to low precipitation conditions",
+                        nasaData: "Variety identification via spectral analysis"
                     }
                 ]
             }
@@ -104,7 +104,7 @@ class GlossarySystem {
     }
 
     /**
-     * Inicializa o sistema de glossário
+     * Initializes the glossary system
      */
     init() {
         this.createGlossaryPopup();
@@ -112,7 +112,7 @@ class GlossarySystem {
     }
 
     /**
-     * Cria o popup do glossário
+     * Creates the glossary popup
      */
     createGlossaryPopup() {
         const popup = document.createElement('div');

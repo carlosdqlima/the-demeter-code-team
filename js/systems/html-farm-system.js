@@ -1131,7 +1131,7 @@ class HtmlFarmSystem {
             plot.organicMatter = Math.min(100, (plot.organicMatter || 50) + 30);
             this.updatePlotDisplay(plotElement, plot);
             this.createOrganicFertilizerParticles(x, y);
-            this.showActionFeedback(plotElement, 'Adubo orgânico aplicado!', '#8FBC8F');
+            this.showActionFeedback(plotElement, 'Organic fertilizer applied!', '#8FBC8F');
         }
     }
 
@@ -1188,9 +1188,9 @@ class HtmlFarmSystem {
             plot.hasIrrigation = !plot.hasIrrigation;
             if (plot.hasIrrigation) {
                 plot.waterLevel = Math.min(100, plot.waterLevel + 40);
-                this.showActionFeedback(plotElement, 'Irrigação ativada!', '#4169E1');
+                this.showActionFeedback(plotElement, 'Irrigation activated!', '#4169E1');
             } else {
-                this.showActionFeedback(plotElement, 'Irrigação desativada!', '#696969');
+                this.showActionFeedback(plotElement, 'Irrigation deactivated!', '#696969');
             }
             this.updatePlotDisplay(plotElement, plot);
             this.createIrrigationParticles(x, y);
@@ -1234,7 +1234,7 @@ class HtmlFarmSystem {
             
             this.updatePlotDisplay(plotElement, plot);
             this.createIrrigateParticles(x, y);
-            this.showActionFeedback(plotElement, 'Irrigação aplicada!', '#1E90FF');
+            this.showActionFeedback(plotElement, 'Irrigation applied!', '#1E90FF');
         }
     }
 

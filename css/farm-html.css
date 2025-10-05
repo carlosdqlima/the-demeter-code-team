@@ -1,6 +1,6 @@
-/* Estilos para o Sistema de Fazenda HTML */
+/* Styles for HTML Farm System */
 
-/* Container principal da fazenda */
+/* Main farm container */
 .farm-container {
     position: absolute;
     top: 0;
@@ -13,7 +13,7 @@
     user-select: none;
 }
 
-/* Grid da fazenda */
+/* Farm grid */
 .farm-grid {
     position: absolute;
     top: 50%;
@@ -29,7 +29,7 @@
     transition: transform 0.3s ease;
 }
 
-/* Parcela individual da fazenda */
+/* Individual farm plot */
 .farm-plot {
     width: 40px;
     height: 40px;
@@ -56,7 +56,7 @@
     animation: plotSelection 2s ease-in-out infinite;
 }
 
-/* Estados de ação */
+/* Action states */
 .farm-plot.planting {
     animation: plantingAction 1.5s ease-out;
 }
@@ -69,7 +69,7 @@
     animation: wateringAction 1.5s ease-out;
 }
 
-/* Estados do solo */
+/* Soil states */
 .farm-plot.dry {
     background: #D2691E;
     border-color: #8B4513;
@@ -161,7 +161,7 @@
     filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
 }
 
-/* Culturas específicas com cores melhoradas */
+/* Specific crops with enhanced colors */
 .crop-visual {
     position: absolute;
     top: 50%;
@@ -233,7 +233,7 @@
     box-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
 }
 
-/* Indicadores múltiplos */
+/* Multiple indicators */
 .plot-indicators {
     position: absolute;
     top: 2px;
@@ -263,7 +263,7 @@
     }
 }
 
-/* Controles da fazenda */
+/* Farm controls */
 .farm-controls {
     position: fixed;
     top: 80px;
@@ -378,7 +378,7 @@
     text-align: center;
 }
 
-/* Botão voltar ao mapa */
+/* Back to map button */
 .back-to-map-btn {
     position: fixed;
     top: 20px;
@@ -406,7 +406,7 @@
     font-size: 16px;
 }
 
-/* Partículas de feedback */
+/* Feedback particles */
 .particle {
     position: absolute;
     pointer-events: none;
@@ -491,7 +491,7 @@
     }
 }
 
-/* Animações de entrada */
+/* Entrance animations */
 .farm-container.entering {
     animation: farm-enter 0.5s ease-out;
 }
@@ -522,7 +522,7 @@
     }
 }
 
-/* Estados de carregamento */
+/* Loading states */
 .farm-container.loading {
     display: flex;
     align-items: center;
@@ -544,7 +544,7 @@
     100% { transform: rotate(360deg); }
 }
 
-/* Estados de drag & drop */
+/* Drag & drop states */
 .farm-plot.drag-over {
     background: #FFE4B5;
     border-color: #DEB887;

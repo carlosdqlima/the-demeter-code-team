@@ -1,6 +1,6 @@
-/* ===== ANIMAÇÕES E EFEITOS VISUAIS ===== */
+/* ===== ANIMATIONS AND VISUAL EFFECTS ===== */
 
-/* ===== ANIMAÇÕES DE ESPAÇO SIDERAL ===== */
+/* ===== SPACE ANIMATIONS ===== */
 @keyframes twinkle {
     0% {
         opacity: 0.3;
@@ -80,7 +80,7 @@
     }
 }
 
-/* ===== ANIMAÇÕES DE PLANTAÇÕES ===== */
+/* ===== CROP ANIMATIONS ===== */
 @keyframes plantingAction {
     0% {
         transform: scale(1);
@@ -236,7 +236,7 @@
     }
 }
 
-/* Animação para feedback de ações */
+/* Animation for action feedback */
 @keyframes feedbackFloat {
     0% {
         transform: translateX(-50%) translateY(0);
@@ -248,7 +248,7 @@
     }
 }
 
-/* ===== ANIMAÇÕES DE ENTRADA ===== */
+/* ===== ENTRANCE ANIMATIONS ===== */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -304,7 +304,7 @@
     }
 }
 
-/* ===== ANIMAÇÕES DE SAÍDA ===== */
+/* ===== EXIT ANIMATIONS ===== */
 @keyframes fadeOut {
     from {
         opacity: 1;
@@ -338,7 +338,7 @@
     }
 }
 
-/* ===== ANIMAÇÕES CONTÍNUAS ===== */
+/* ===== CONTINUOUS ANIMATIONS ===== */
 @keyframes pulse {
     0%, 100% {
         opacity: 1;
@@ -395,7 +395,7 @@
     }
 }
 
-/* ===== ANIMAÇÕES ESPECÍFICAS DO JOGO ===== */
+/* ===== GAME-SPECIFIC ANIMATIONS ===== */
 @keyframes satellite-orbit {
     0% {
         transform: rotate(0deg) translateX(30px) rotate(0deg);
@@ -491,7 +491,7 @@
     }
 }
 
-/* ===== CLASSES DE ANIMAÇÃO ===== */
+/* ===== ANIMATION CLASSES ===== */
 .animate-fade-in {
     animation: fadeIn 0.5s ease-out forwards;
 }
@@ -556,7 +556,7 @@
     animation: climate-warning 1.5s ease-in-out infinite;
 }
 
-/* ===== EFEITOS DE HOVER ===== */
+/* ===== HOVER EFFECTS ===== */
 .hover-lift {
     transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
@@ -582,7 +582,7 @@
     transform: scale(1.05);
 }
 
-/* ===== EFEITOS DE PARTÍCULAS ===== */
+/* ===== PARTICLES ===== */
 .particle-effect {
     position: relative;
     overflow: hidden;
@@ -601,7 +601,7 @@
     pointer-events: none;
 }
 
-/* ===== EFEITOS DE LOADING ===== */
+/* ===== LOADING ===== */
 .loading-spinner {
     width: 40px;
     height: 40px;
@@ -630,7 +630,7 @@
     animation-delay: 0.5s;
 }
 
-/* ===== EFEITOS DE TRANSIÇÃO DE PÁGINA ===== */
+/* ===== PAGE TRANSITION ===== */
 .page-transition-enter {
     opacity: 0;
     transform: translateX(100%);
@@ -653,7 +653,7 @@
     transition: all 0.5s ease-in;
 }
 
-/* ===== EFEITOS RESPONSIVOS ===== */
+/* ===== RESPONSIVE ===== */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -664,7 +664,7 @@
     }
 }
 
-/* ===== EFEITOS DE PERFORMANCE ===== */
+/* ===== PERFORMANCE ===== */
 .gpu-accelerated {
     transform: translateZ(0);
     will-change: transform;
@@ -674,7 +674,7 @@
     scroll-behavior: smooth;
 }
 
-/* ===== EFEITOS ESPECÍFICOS DA NASA ===== */
+/* ===== NASA-SPECIFIC EFFECTS ===== */
 .nasa-glow {
     box-shadow: 
         0 0 10px rgba(11, 61, 145, 0.3),

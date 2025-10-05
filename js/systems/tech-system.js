@@ -1,6 +1,6 @@
 /**
- * Sistema de Tecnologia - NASA Farm Navigators
- * Gerencia pesquisa, desenvolvimento e aplicação de tecnologias agrícolas
+ * Technology System - NASA Farm Navigators
+ * Manages research, development and application of agricultural technologies
  */
 
 class TechSystem {
@@ -29,35 +29,35 @@ class TechSystem {
             equipment: 2
         };
         
-        // Categorias de tecnologia
+        // Technology categories
         this.techCategories = {
             agriculture: {
-                name: 'Agricultura',
+                name: 'Agriculture',
                 icon: '🌾',
-                description: 'Tecnologias para melhorar produção agrícola'
+                description: 'Technologies to improve agricultural production'
             },
             irrigation: {
-                name: 'Irrigação',
+                name: 'Irrigation',
                 icon: '💧',
-                description: 'Sistemas avançados de irrigação'
+                description: 'Advanced irrigation systems'
             },
             genetics: {
-                name: 'Genética',
+                name: 'Genetics',
                 icon: '🧬',
-                description: 'Melhoramento genético de culturas'
+                description: 'Genetic improvement of crops'
             },
             automation: {
-                name: 'Automação',
+                name: 'Automation',
                 icon: '🤖',
-                description: 'Automação de processos agrícolas'
+                description: 'Automation of agricultural processes'
             },
             sustainability: {
-                name: 'Sustentabilidade',
+                name: 'Sustainability',
                 icon: '♻️',
-                description: 'Práticas agrícolas sustentáveis'
+                description: 'Sustainable agricultural practices'
             },
             monitoring: {
-                name: 'Monitoramento',
+                name: 'Monitoring',
                 icon: '📡',
                 description: 'Sistemas de monitoramento e sensores'
             }

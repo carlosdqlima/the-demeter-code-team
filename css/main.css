@@ -1,22 +1,22 @@
-/* ===== RESET E VARIÁVEIS CSS ===== */
+/* ===== CSS RESET AND VARIABLES ===== */
 :root {
-    /* === PALETA DE CORES OFICIAL NASA FARM NAVIGATORS === */
+    /* === OFFICIAL NASA FARM NAVIGATORS COLOR PALETTE === */
     
-    /* Cores Primárias */
-    --orbital-blue: #0B3D91;        /* Azul Orbital - Cor principal da interface */
-    --harvest-green: #2E8540;       /* Verde Safra - Feedback positivo e crescimento */
+    /* Primary Colors */
+    --orbital-blue: #0B3D91;        /* Orbital Blue - Main interface color */
+    --harvest-green: #2E8540;       /* Harvest Green - Positive feedback and growth */
     
-    /* Cores Secundárias */
-    --fertile-brown: #8B4513;       /* Marrom Fértil - Estado do solo */
-    --aqua-blue: #56A0D3;          /* Azul Água - Irrigação e umidade */
+    /* Secondary Colors */
+    --fertile-brown: #8B4513;       /* Fertile Brown - Soil state */
+    --aqua-blue: #56A0D3;          /* Aqua Blue - Irrigation and humidity */
     
-    /* Cores Neutras */
-    --space-gray: #F0F2F5;         /* Cinza Espacial - Fundo de painéis */
-    --dark-graphite: #333333;      /* Grafite Escuro - Textos principais */
+    /* Neutral Colors */
+    --space-gray: #F0F2F5;         /* Space Gray - Panel background */
+    --dark-graphite: #333333;      /* Dark Graphite - Main texts */
     
-    /* Cores de Ação e Alerta */
-    --alert-orange: #FFA500;       /* Laranja Alerta - Avisos médios */
-    --critical-red: #D8000C;       /* Vermelho Crítico - Alertas urgentes */
+    /* Action and Alert Colors */
+    --alert-orange: #FFA500;       /* Alert Orange - Medium warnings */
+    --critical-red: #D8000C;       /* Critical Red - Urgent alerts */
     
     /* === MAPEAMENTO PARA COMPATIBILIDADE === */
     
@@ -45,14 +45,14 @@
     --nasa-red: #fc3d21;
     --nasa-white: #ffffff;
     
-    /* Cores climáticas e estados */
+    /* Climate and state colors */
     --climate-good: var(--harvest-green);
     --climate-moderate: var(--alert-orange);
     --climate-poor: var(--critical-red);
     --soil-color: var(--fertile-brown);
     --water-color: var(--aqua-blue);
     
-    /* Espaçamentos */
+    /* Spacing */
     --spacing-xs: 0.25rem;
     --spacing-sm: 0.5rem;
     --spacing-md: 1rem;
@@ -60,17 +60,17 @@
     --spacing-xl: 2rem;
     --spacing-2xl: 3rem;
     
-    /* Bordas */
+    /* Borders */
     --border-radius: 0.5rem;
     --border-radius-lg: 1rem;
     
-    /* Sombras */
+    /* Shadows */
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
     
-    /* Transições */
+    /* Transitions */
     --transition-fast: 0.15s ease-in-out;
     --transition-normal: 0.3s ease-in-out;
     --transition-slow: 0.5s ease-in-out;
@@ -90,7 +90,7 @@ html, body {
     overflow: hidden;
 }
 
-/* ===== UTILITÁRIOS ===== */
+/* ===== UTILITIES ===== */
 .hidden {
     display: none !important;
 }
@@ -169,7 +169,7 @@ html, body {
     animation: twinkle-slow 6s ease-in-out infinite alternate;
 }
 
-/* Partículas espaciais flutuantes */
+/* Floating space particles */
 .space-particles {
     position: absolute;
     top: 0;
@@ -331,7 +331,7 @@ html, body {
     letter-spacing: 0.5px;
 }
 
-/* ===== OVERLAY MAPA MUNDIAL ===== */
+/* ===== WORLD MAP OVERLAY ===== */
 .world-map-overlay {
     position: fixed;
     top: 0;
@@ -475,7 +475,7 @@ html, body {
     border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
-/* ===== LAYOUT PRINCIPAL ===== */
+/* ===== MAIN LAYOUT ===== */
 .game-container {
     height: 100vh;
     display: grid;
@@ -494,7 +494,7 @@ html, body {
     visibility: visible;
 }
 
-/* Interface de Jogo em Tela Única */
+/* Single Screen Game Interface */
 .game-area-fullscreen {
     width: 100vw;
     height: 100vh;
@@ -704,7 +704,7 @@ html, body {
     background: var(--accent-color);
 }
 
-/* ===== PAINÉIS ===== */
+/* ===== PANELS ===== */
 .panel {
     background: var(--bg-secondary);
     border-radius: var(--border-radius-lg);
@@ -762,7 +762,7 @@ html, body {
     color: var(--text-primary);
 }
 
-/* ===== ÁREA DO JOGO ===== */
+/* ===== GAME AREA ===== */
 .game-area {
     grid-area: game-area;
     position: relative;
@@ -772,7 +772,7 @@ html, body {
     box-shadow: var(--shadow-lg);
 }
 
-/* Área principal do conteúdo */
+/* Main content area */
 .main-content {
     grid-area: main;
     width: 100%;
@@ -784,10 +784,10 @@ html, body {
 
 .game-overlay {
     position: absolute;
-    top: 70px;                  /* Posicionamento otimizado para melhor visualização */
-    left: 20px;                 /* Posicionamento fixo para consistência */
+    top: 70px;                  /* Optimized positioning for better visualization */
+    left: 20px;                 /* Fixed positioning for consistency */
     z-index: 10;
-    pointer-events: none;       /* Permite cliques através do overlay */
+    pointer-events: none;       /* Allows clicks through the overlay */
 }
 
 .game-overlay > * {
@@ -866,7 +866,7 @@ html, body {
     animation: pulse 2s infinite;
 }
 
-/* ===== RESPONSIVIDADE ===== */
+/* ===== RESPONSIVENESS ===== */
 @media (max-width: 1200px) {
     .game-area-fullscreen {
         grid-template-columns: 70px 1fr 180px;
@@ -961,7 +961,7 @@ html, body {
     }
 }
 
-/* ===== ANIMAÇÕES ===== */
+/* ===== ANIMATIONS ===== */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -1379,7 +1379,7 @@ html, body {
     font-size: 14px;
 }
 
-/* Container de imagem de satélite */
+/* Satellite image container */
 .satellite-container {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
@@ -1393,7 +1393,7 @@ html, body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Container de atividades agrícolas */
+/* Agricultural activities container */
 .activities-container {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
@@ -1553,7 +1553,7 @@ html, body {
     font-size: 24px;
 }
 
-/* Botões de Tecnologia */
+/* Technology Buttons */
 .tech-buttons {
     display: flex;
     flex-direction: column;
@@ -1635,12 +1635,12 @@ html, body {
     opacity: 0.7;
 }
 
-/* Painéis Ocultos */
+/* Hidden Panels */
 .hidden {
     display: none !important;
 }
 
-/* Popup do Glossário */
+/* Glossary Popup */
 .glossary-popup {
     position: fixed;
     top: 0;
@@ -1818,7 +1818,7 @@ html, body {
     line-height: 1.4;
 }
 
-/* Animações para Indicadores de Problemas */
+/* Animations for Problem Indicators */
 .indicator-item.active {
     animation: problemPulse 2s infinite;
 }

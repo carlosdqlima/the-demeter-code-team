@@ -20,63 +20,63 @@ class WeatherSystem {
             realTimeWeather: false // Se deve usar dados reais da API
         };
         
-        // Tipos de condições climáticas
+        // Weather condition types
         this.weatherTypes = {
             sunny: {
-                name: 'Ensolarado',
+                name: 'Sunny',
                 icon: '☀️',
                 cropGrowthMultiplier: 1.2,
                 waterConsumption: 1.5,
                 diseaseRisk: 0.1,
-                description: 'Céu claro e ensolarado'
+                description: 'Clear and sunny sky'
             },
             cloudy: {
-                name: 'Nublado',
+                name: 'Cloudy',
                 icon: '☁️',
                 cropGrowthMultiplier: 1.0,
                 waterConsumption: 1.0,
                 diseaseRisk: 0.15,
-                description: 'Céu parcialmente nublado'
+                description: 'Partially cloudy sky'
             },
             rainy: {
-                name: 'Chuvoso',
+                name: 'Rainy',
                 icon: '🌧️',
                 cropGrowthMultiplier: 1.1,
                 waterConsumption: 0.3,
                 diseaseRisk: 0.3,
-                description: 'Chuva moderada'
+                description: 'Moderate rain'
             },
             stormy: {
-                name: 'Tempestade',
+                name: 'Stormy',
                 icon: '⛈️',
                 cropGrowthMultiplier: 0.7,
                 waterConsumption: 0.1,
                 diseaseRisk: 0.4,
-                description: 'Tempestade com ventos fortes'
+                description: 'Storm with strong winds'
             },
             drought: {
-                name: 'Seca',
+                name: 'Drought',
                 icon: '🌵',
                 cropGrowthMultiplier: 0.5,
                 waterConsumption: 2.0,
                 diseaseRisk: 0.2,
-                description: 'Condições de seca severa'
+                description: 'Severe drought conditions'
             },
             frost: {
-                name: 'Geada',
+                name: 'Frost',
                 icon: '❄️',
                 cropGrowthMultiplier: 0.3,
                 waterConsumption: 0.8,
                 diseaseRisk: 0.1,
-                description: 'Temperaturas abaixo de zero'
+                description: 'Below freezing temperatures'
             },
             heatwave: {
-                name: 'Onda de Calor',
+                name: 'Heat Wave',
                 icon: '🔥',
                 cropGrowthMultiplier: 0.6,
                 waterConsumption: 2.5,
                 diseaseRisk: 0.25,
-                description: 'Temperaturas extremamente altas'
+                description: 'Extremely high temperatures'
             }
         };
         
