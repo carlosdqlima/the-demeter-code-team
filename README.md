@@ -1,310 +1,309 @@
 # 🌍 FarmVerse
 
-## Jogo de Agricultura Global com Dados Reais da NASA
+## Global Agriculture Game with Real NASA Data
 
-**FarmVerse** é um jogo de simulação agrícola inovador que combina mecânicas de jogo estilo Top Crop com dados climáticos e geográficos reais da NASA. Os jogadores gerenciam fazendas ao redor do mundo, tomando decisões baseadas em informações científicas reais sobre clima, solo e sustentabilidade.
+**FarmVerse** is an innovative agricultural simulation game that combines Top Crop-style game mechanics with real climate and geographic data from NASA. Players manage farms around the world, making decisions based on real scientific information about climate, soil, and sustainability.
 
 ![FarmVerse](assets/images/ui/banner.png)
 
-## 🎯 Características Principais
+## 🎯 Main Features
 
-### 🌐 **Mapa Mundial Interativo**
-- Mapa global interativo usando Leaflet.js
-- Regiões agrícolas baseadas em dados geográficos reais
-- Visualização de dados climáticos em tempo real
-- Seleção de localizações para criação de fazendas
+### 🌐 **Interactive World Map**
+- Interactive global map using Leaflet.js
+- Agricultural regions based on real geographic data
+- Real-time climate data visualization
+- Location selection for farm creation
 
-### 🛰️ **Integração com APIs da NASA**
-- **NASA Earth Data**: Imagens de satélite e índices de vegetação
-- **NASA Power API**: Dados de radiação solar, temperatura e precipitação
-- **NASA MODIS**: Cobertura vegetal e umidade do solo
-- **NASA GISS**: Dados climáticos históricos
+### 🛰️ **NASA APIs Integration**
+- **NASA Earth Data**: Satellite imagery and vegetation indices
+- **NASA Power API**: Solar radiation, temperature and precipitation data
+- **NASA MODIS**: Vegetation cover and soil moisture
+- **NASA GISS**: Historical climate data
 
-### 🚜 **Sistema de Fazendas Avançado**
-- Plantio e colheita de múltiplas culturas
-- Crescimento baseado em condições climáticas reais
-- Gestão de recursos (água, fertilizantes, energia)
-- Tecnologias sustentáveis (painéis solares, irrigação inteligente)
+### 🚜 **Advanced Farm System**
+- Planting and harvesting multiple crops
+- Growth based on real climate conditions
+- Resource management (water, fertilizers, energy)
+- Sustainable technologies (solar panels, smart irrigation)
 
-### 📊 **Economia Global Dinâmica**
-- Preços de commodities baseados em mercados reais
-- Oferta e demanda regional
-- Contratos futuros e especulação
-- Impacto de eventos climáticos nos preços
+### 📊 **Dynamic Global Economy**
+- Commodity prices based on real markets
+- Regional supply and demand
+- Futures contracts and speculation
+- Impact of climate events on prices
 
-### 🌱 **Sustentabilidade e Tecnologia**
-- Sistema de pontuação de sustentabilidade
-- Pesquisa e desenvolvimento de tecnologias
-- Agricultura de precisão com drones
-- Energias renováveis e eficiência energética
+### 🌱 **Sustainability and Technology**
+- Sustainability scoring system
+- Technology research and development
+- Precision agriculture with drones
+- Renewable energy and energy efficiency
 
-## 🛠️ Tecnologias Utilizadas
+## 🛠️ Technologies Used
 
 ### **Frontend**
-- **HTML5**: Estrutura semântica e Canvas para renderização
-- **CSS3**: Estilização responsiva com Grid e Flexbox
-- **JavaScript ES6+**: Lógica principal e programação orientada a objetos
+- **HTML5**: Semantic structure and Canvas for rendering
+- **CSS3**: Responsive styling with Grid and Flexbox
+- **JavaScript ES6+**: Main logic and object-oriented programming
 
-### **Bibliotecas e Frameworks**
-- **Phaser.js 3.70**: Engine de jogo para mecânicas de fazenda
-- **Leaflet.js**: Mapa mundial interativo
-- **Three.js**: Efeitos visuais 3D
-- **jQuery**: Manipulação DOM e AJAX
-- **Font Awesome**: Ícones vetoriais
+### **Libraries and Frameworks**
+- **Phaser.js 3.70**: Game engine for farm mechanics
+- **Leaflet.js**: Interactive world map
+- **Three.js**: 3D visual effects
+- **jQuery**: DOM manipulation and AJAX
+- **Font Awesome**: Vector icons
 
-### **APIs e Dados**
-- **NASA APIs**: Dados climáticos e geográficos em tempo real
-- **OpenStreetMap**: Tiles de mapa base
-- **Dados Simulados**: Fallback para modo offline
+### **APIs and Data**
+- **NASA APIs**: Real-time climate and geographic data
+- **OpenStreetMap**: Base map tiles
+- **Simulated Data**: Fallback for offline mode
 
-## 🏗️ Arquitetura do Projeto
+## 🏗️ Project Architecture
 
 ```
 nasa-farm-navigators/
-├── index.html                 # Página principal
+├── index.html                 # Main page
 ├── css/
-│   ├── main.css              # Estilos principais
-│   ├── ui.css                # Interface do usuário
-│   └── animations.css        # Animações CSS3
+│   ├── main.css              # Main styles
+│   ├── ui.css                # User interface
+│   └── animations.css        # CSS3 animations
 ├── js/
 │   ├── core/
-│   │   ├── config.js         # Configurações globais
-│   │   ├── utils.js          # Utilitários
-│   │   └── game.js           # Inicialização do jogo
+│   │   ├── config.js         # Global configurations
+│   │   ├── utils.js          # Utilities
+│   │   └── game.js           # Game initialization
 │   ├── systems/
-│   │   ├── map-system.js     # Sistema de mapa mundial
-│   │   ├── farm-system.js    # Sistema de fazendas
-│   │   ├── weather-system.js # Sistema climático
-│   │   ├── economy-system.js # Sistema econômico
-│   │   └── tech-system.js    # Sistema de tecnologia
+│   │   ├── map-system.js     # World map system
+│   │   ├── farm-system.js    # Farm system
+│   │   ├── weather-system.js # Weather system
+│   │   ├── economy-system.js # Economic system
+│   │   └── tech-system.js    # Technology system
 │   ├── data/
-│   │   ├── nasa-api.js       # Integração APIs NASA
-│   │   ├── crops-data.js     # Dados de culturas
-│   │   └── regions-data.js   # Dados regionais
+│   │   ├── nasa-api.js       # NASA APIs integration
+│   │   ├── crops-data.js     # Crop data
+│   │   └── regions-data.js   # Regional data
 │   ├── ui/
-│   │   ├── hud.js            # Interface principal
-│   │   ├── panels.js         # Painéis de controle
-│   │   └── modals.js         # Janelas modais
-│   └── main.js               # Arquivo principal
+│   │   ├── hud.js            # Main interface
+│   │   ├── panels.js         # Control panels
+│   │   └── modals.js         # Modal windows
+│   └── main.js               # Main file
 ├── assets/
-│   ├── images/               # Imagens do jogo
-│   ├── sounds/               # Efeitos sonoros
-│   └── data/                 # Dados estáticos
+│   ├── images/               # Game images
+│   ├── sounds/               # Sound effects
+│   └── data/                 # Static data
 └── docs/
-    ├── ARCHITECTURE.md       # Documentação da arquitetura
-    ├── API.md                # Documentação da API
-    └── GAMEPLAY.md           # Mecânicas de jogo
+    ├── ARCHITECTURE.md       # Architecture documentation
+    ├── API.md                # API documentation
+    └── GAMEPLAY.md           # Game mechanics
 ```
 
-## 🚀 Como Executar
+## 🚀 How to Run
 
-### **Pré-requisitos**
-- Navegador moderno com suporte a ES6+
-- Servidor web local (Python, Node.js, ou similar)
-- Conexão com internet para APIs da NASA
+### **Prerequisites**
+- Modern browser with ES6+ support
+- Local web server (Python, Node.js, or similar)
+- Internet connection for NASA APIs
 
-### **Instalação**
+### **Installation**
 
-1. **Clone o repositório**
+1. **Clone the repository**
    ```bash
-   git clone https://github.com/seu-usuario/nasa-farm-navigators.git
+   git clone https://github.com/your-username/nasa-farm-navigators.git
    cd nasa-farm-navigators
    ```
 
-2. **Configure a API Key da NASA**
-   - Obtenha uma chave gratuita em: https://api.nasa.gov/
-   - Edite `js/core/config.js` e substitua `DEMO_KEY` pela sua chave
+2. **Configure NASA API Key**
+   - Get a free key at: https://api.nasa.gov/
+   - Edit `js/core/config.js` and replace `DEMO_KEY` with your key
 
-3. **Inicie um servidor local**
+3. **Start a local server**
    
-   **Usando Node.js:**
+   **Using Node.js:**
    ```bash
    npx serve .
    ```
    
-   **Usando Python:**
+   **Using Python:**
    ```bash
    python -m http.server 8000
    ```
 
-4. **Acesse o jogo**
-   - Abra `http://localhost:3000` (Node.js) ou `http://localhost:8000` (Python)
+4. **Access the game**
+   - Open `http://localhost:3000` (Node.js) or `http://localhost:8000` (Python)
 
-## 🎮 Como Jogar
+## 🎮 How to Play
 
-### **Primeiros Passos**
-1. **Explore o Mapa**: Use o mapa mundial para navegar entre regiões
-2. **Selecione uma Região**: Clique em uma região para ver dados climáticos
-3. **Crie uma Fazenda**: Clique no mapa para criar sua primeira fazenda
-4. **Plante Culturas**: Use os botões de ação para plantar diferentes culturas
+### **Getting Started**
+1. **Explore the Map**: Use the world map to navigate between regions
+2. **Select a Region**: Click on a region to see climate data
+3. **Create a Farm**: Click on the map to create your first farm
+4. **Plant Crops**: Use action buttons to plant different crops
 
-### **Mecânicas Principais**
+### **Main Mechanics**
 
-#### **🌱 Agricultura**
-- **Plantio**: Selecione culturas adequadas ao clima da região
-- **Crescimento**: Plantas crescem baseadas em dados climáticos reais
-- **Colheita**: Colha no momento certo para maximizar lucros
-- **Rotação**: Pratique rotação de culturas para manter solo saudável
+#### **🌱 Agriculture**
+- **Planting**: Select crops suitable for the region's climate
+- **Growth**: Plants grow based on real climate data
+- **Harvest**: Harvest at the right time to maximize profits
+- **Rotation**: Practice crop rotation to maintain healthy soil
 
-#### **💰 Economia**
-- **Mercados**: Monitore preços globais de commodities
-- **Vendas**: Venda suas colheitas no melhor momento
-- **Investimentos**: Invista em tecnologias para aumentar eficiência
-- **Contratos**: Negocie contratos futuros para garantir preços
+#### **💰 Economy**
+- **Markets**: Monitor global commodity prices
+- **Sales**: Sell your harvests at the best time
+- **Investments**: Invest in technologies to increase efficiency
+- **Contracts**: Negotiate futures contracts to secure prices
 
-#### **🔬 Tecnologia**
-- **Pesquisa**: Desenvolva novas tecnologias agrícolas
-- **Sustentabilidade**: Implemente práticas sustentáveis
-- **Automação**: Use drones e IA para otimizar operações
-- **Energia**: Invista em energias renováveis
+#### **🔬 Technology**
+- **Research**: Develop new agricultural technologies
+- **Sustainability**: Implement sustainable practices
+- **Automation**: Use drones and AI to optimize operations
+- **Energy**: Invest in renewable energy
 
-### **Sistema de Pontuação**
-- **Produtividade**: Quantidade de alimentos produzidos
-- **Sustentabilidade**: Impacto ambiental das práticas
-- **Eficiência**: Uso otimizado de recursos
-- **Inovação**: Adoção de novas tecnologias
+### **Scoring System**
+- **Productivity**: Amount of food produced
+- **Sustainability**: Environmental impact of practices
+- **Efficiency**: Optimized use of resources
+- **Innovation**: Adoption of new technologies
 
-## 🌍 Dados da NASA Utilizados
+## 🌍 NASA Data Used
 
-### **Dados Climáticos**
-- **Temperatura**: Máximas, mínimas e médias diárias
-- **Precipitação**: Dados de chuva e umidade
-- **Radiação Solar**: Energia solar disponível
-- **Vento**: Velocidade e direção do vento
+### **Climate Data**
+- **Temperature**: Daily maximum, minimum and average temperatures
+- **Precipitation**: Rain and humidity data
+- **Solar Radiation**: Available solar energy
+- **Wind**: Wind speed and direction
 
-### **Dados de Solo**
-- **Umidade**: Níveis de água no solo
-- **Temperatura**: Temperatura do solo
-- **Composição**: Tipos de solo e nutrientes
-- **Erosão**: Riscos de degradação
+### **Soil Data**
+- **Moisture**: Soil water levels
+- **Temperature**: Soil temperature
+- **Composition**: Soil types and nutrients
+- **Erosion**: Degradation risks
 
-### **Dados de Vegetação**
-- **NDVI**: Índice de vegetação normalizado
-- **Cobertura**: Percentual de cobertura vegetal
-- **Saúde**: Indicadores de saúde das plantas
-- **Crescimento**: Taxas de crescimento sazonal
+### **Vegetation Data**
+- **NDVI**: Normalized Difference Vegetation Index
+- **Coverage**: Percentage of vegetation cover
+- **Health**: Plant health indicators
+- **Growth**: Seasonal growth rates
 
-## 🎨 Interface do Usuário
+## 🎨 User Interface
 
-### **Layout Responsivo**
-- **Desktop**: Layout de três colunas com mapa, jogo e controles
-- **Tablet**: Layout adaptativo com painéis recolhíveis
-- **Mobile**: Interface otimizada para toque
+### **Responsive Layout**
+- **Desktop**: Three-column layout with map, game and controls
+- **Tablet**: Adaptive layout with collapsible panels
+- **Mobile**: Touch-optimized interface
 
-### **Componentes Principais**
-- **Header**: Estatísticas do jogador e controles globais
-- **Mapa Mundial**: Navegação e seleção de regiões
-- **Área de Jogo**: Visualização das fazendas
-- **Painéis Laterais**: Controles e informações
-- **Footer**: Status do jogo e conexão
+### **Main Components**
+- **Header**: Player statistics and global controls
+- **World Map**: Navigation and region selection
+- **Game Area**: Farm visualization
+- **Side Panels**: Controls and information
+- **Footer**: Game status and connection
 
-### **Temas e Cores**
-- **Paleta NASA**: Azul espacial (#0b3d91) e vermelho NASA (#fc3d21)
-- **Cores Naturais**: Verdes para agricultura, azuis para água
-- **Modo Escuro**: Interface otimizada para longas sessões
-- **Alto Contraste**: Acessibilidade para deficientes visuais
+### **Themes and Colors**
+- **NASA Palette**: Space blue (#0b3d91) and NASA red (#fc3d21)
+- **Natural Colors**: Greens for agriculture, blues for water
+- **Dark Mode**: Interface optimized for long sessions
+- **High Contrast**: Accessibility for visually impaired
 
-## 📱 Responsividade
+## 📱 Responsiveness
 
 ### **Breakpoints**
-- **Desktop**: > 1200px - Layout completo
-- **Tablet**: 768px - 1200px - Layout adaptativo
-- **Mobile**: < 768px - Layout simplificado
+- **Desktop**: > 1200px - Full layout
+- **Tablet**: 768px - 1200px - Adaptive layout
+- **Mobile**: < 768px - Simplified layout
 
-### **Otimizações Mobile**
-- **Touch Controls**: Gestos otimizados para toque
-- **Performance**: Renderização otimizada para dispositivos móveis
-- **Conectividade**: Modo offline com dados simulados
-- **Bateria**: Otimizações para economizar energia
+### **Mobile Optimizations**
+- **Touch Controls**: Touch-optimized gestures
+- **Performance**: Optimized rendering for mobile devices
+- **Connectivity**: Offline mode with simulated data
+- **Battery**: Optimizations to save energy
 
-## 🔧 Configuração Avançada
+## 🔧 Advanced Configuration
 
-### **Configurações de Jogo**
+### **Game Settings**
 ```javascript
 // js/core/config.js
 const GameConfig = {
     gameplay: {
-        timeScale: 1,           // Velocidade do jogo
-        startingMoney: 50000,   // Dinheiro inicial
-        difficulty: 'normal'    // Dificuldade
+        timeScale: 1,           // Game speed
+        startingMoney: 50000,   // Starting money
+        difficulty: 'normal'    // Difficulty
     },
     nasa: {
-        apiKey: 'SUA_CHAVE_AQUI',
-        rateLimit: 1000,        // ms entre requisições
-        timeout: 10000          // timeout em ms
+        apiKey: 'YOUR_KEY_HERE',
+        rateLimit: 1000,        // ms between requests
+        timeout: 10000          // timeout in ms
     }
 };
 ```
 
-### **Personalização de Culturas**
+### **Crop Customization**
 ```javascript
 // js/data/crops-data.js
 const crops = {
     wheat: {
-        growthTime: 15000,      // Tempo de crescimento
-        optimalTemp: [15, 25],  // Temperatura ideal
-        waterNeeds: 'medium',   // Necessidade de água
-        price: 150              // Preço base
+        growthTime: 15000,      // Growth time
+        optimalTemp: [15, 25],  // Optimal temperature
+        waterNeeds: 'medium',   // Water requirements
+        price: 150              // Base price
     }
 };
 ```
 
-## 🧪 Desenvolvimento
+## 🧪 Development
 
-### **Estrutura de Desenvolvimento**
+### **Development Structure**
 ```bash
-# Instalar dependências de desenvolvimento
+# Install development dependencies
 npm install -g live-server
 
-# Executar em modo desenvolvimento
+# Run in development mode
 live-server --port=3000
 
-# Executar testes
+# Run tests
 npm test
 
-# Build para produção
+# Build for production
 npm run build
 ```
 
-### **Padrões de Código**
-- **ES6+**: Uso de classes, arrow functions e async/await
-- **Modularização**: Cada sistema em arquivo separado
-- **Documentação**: JSDoc para todas as funções
-- **Nomenclatura**: camelCase para variáveis, PascalCase para classes
+### **Code Standards**
+- **ES6+**: Use of classes, arrow functions and async/await
+- **Modularization**: Each system in separate file
+- **Documentation**: JSDoc for all functions
+- **Naming**: camelCase for variables, PascalCase for classes
 
 ### **Performance**
-- **Lazy Loading**: Carregamento sob demanda de assets
-- **Cache**: Sistema de cache para APIs da NASA
-- **Otimização**: Minificação e compressão para produção
-- **Monitoramento**: Métricas de performance em tempo real
+- **Lazy Loading**: On-demand asset loading
+- **Cache**: Cache system for NASA APIs
+- **Optimization**: Minification and compression for production
+- **Monitoring**: Real-time performance metrics
 
-## 🤝 Contribuição
+## 🤝 Contributing
 
-### **Como Contribuir**
-1. Fork o projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
+### **How to Contribute**
+1. Fork the project
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-### **Diretrizes**
-- Siga os padrões de código estabelecidos
-- Adicione testes para novas funcionalidades
-- Documente mudanças no README
-- Mantenha commits pequenos e focados
+### **Guidelines**
+- Follow established code standards
+- Add tests for new features
+- Document changes in README
+- Keep commits small and focused
 
-## 📄 Licença
+## 📄 License
 
-Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Agradecimentos
+## 🙏 Acknowledgments
 
-- **NASA**: Pelos dados abertos e APIs gratuitas
-- **OpenStreetMap**: Pelos tiles de mapa
-- **Phaser.js**: Pela excelente engine de jogos
-- **Leaflet.js**: Pela biblioteca de mapas
-- **Comunidade Open Source**: Por todas as bibliotecas utilizadas
+- **NASA**: For open data and free APIs
+- **OpenStreetMap**: For map tiles
+- **Leaflet.js**: For the mapping library
+- **Open Source Community**: For all the libraries used
 
 ---
 
-**🌍 Construindo o futuro da agricultura com dados da NASA! 🚀**
+**🌍 Building the future of agriculture with NASA data! 🚀**
