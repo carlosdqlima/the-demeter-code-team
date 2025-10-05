@@ -1,5 +1,5 @@
 /**
- * Technology System - NASA Farm Navigators
+ * Technology System - FarmVerse
  * Manages research, development and application of agricultural technologies
  */
 

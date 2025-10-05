@@ -1,5 +1,5 @@
 /**
- * Panels - NASA Farm Navigators
+ * Panels - FarmVerse
  * Gerencia todos os painéis da interface do usuário
  */
 
@@ -23,16 +23,16 @@ class Panels {
         
         // Tipos de painéis disponíveis
         this.panelTypes = {
-            farm: 'Fazenda',
-            market: 'Mercado',
-            research: 'Pesquisa',
-            inventory: 'Inventário',
-            settings: 'Configurações',
-            weather: 'Clima',
-            statistics: 'Estatísticas',
-            achievements: 'Conquistas',
+            farm: 'Farm',
+            market: 'Market',
+            research: 'Research',
+            inventory: 'Inventory',
+            settings: 'Settings',
+            weather: 'Weather',
+            statistics: 'Statistics',
+            achievements: 'Achievements',
             tutorial: 'Tutorial',
-            help: 'Ajuda'
+            help: 'Help'
         };
         
         // Estado dos painéis
@@ -122,7 +122,7 @@ class Panels {
     registerDefaultPanels() {
         // Painel de fazenda
         this.registerPanel('farm', {
-            title: 'Gerenciar Fazenda',
+            title: 'Manage Farm',
             size: { width: 600, height: 500 },
             resizable: true,
             content: this.createFarmPanelContent
@@ -130,7 +130,7 @@ class Panels {
         
         // Painel de mercado
         this.registerPanel('market', {
-            title: 'Mercado',
+            title: 'Market',
             size: { width: 700, height: 600 },
             resizable: true,
             content: this.createMarketPanelContent
@@ -138,7 +138,7 @@ class Panels {
         
         // Painel de pesquisa
         this.registerPanel('research', {
-            title: 'Centro de Pesquisa',
+            title: 'Research Center',
             size: { width: 650, height: 550 },
             resizable: true,
             content: this.createResearchPanelContent
@@ -146,7 +146,7 @@ class Panels {
         
         // Painel de inventário
         this.registerPanel('inventory', {
-            title: 'Inventário',
+            title: 'Inventory',
             size: { width: 500, height: 400 },
             resizable: false,
             content: this.createInventoryPanelContent
@@ -154,7 +154,7 @@ class Panels {
         
         // Painel de configurações
         this.registerPanel('settings', {
-            title: 'Configurações',
+            title: 'Settings',
             size: { width: 450, height: 350 },
             resizable: false,
             content: this.createSettingsPanelContent
@@ -570,22 +570,22 @@ class Panels {
                 </div>
                 
                 <div class="research-categories">
-                    <button class="category-btn active" data-category="agriculture">Agricultura</button>
-                    <button class="category-btn" data-category="technology">Tecnologia</button>
-                    <button class="category-btn" data-category="sustainability">Sustentabilidade</button>
-                    <button class="category-btn" data-category="space">Espacial</button>
+                    <button class="category-btn active" data-category="agriculture">Agriculture</button>
+                    <button class="category-btn" data-category="technology">Technology</button>
+                    <button class="category-btn" data-category="sustainability">Sustainability</button>
+                    <button class="category-btn" data-category="space">Space</button>
                 </div>
                 
                 <div class="research-content">
                     <div class="research-tree" id="research-tree">
-                        <p>Carregando árvore de pesquisa...</p>
+                        <p>Loading research tree...</p>
                     </div>
                 </div>
                 
                 <div class="research-queue">
-                    <h4>Fila de Pesquisa</h4>
+                    <h4>Research Queue</h4>
                     <div class="queue-list" id="research-queue-list">
-                        <p>Nenhuma pesquisa na fila</p>
+                        <p>No research in queue</p>
                     </div>
                 </div>
             </div>
@@ -597,24 +597,24 @@ class Panels {
             <div class="inventory-panel">
                 <div class="inventory-header">
                     <div class="inventory-capacity">
-                        <span>Capacidade: </span>
+                        <span>Capacity: </span>
                         <span id="inventory-used">0</span>/<span id="inventory-max">100</span>
                     </div>
                     <div class="inventory-filters">
-                        <button class="filter-btn active" data-filter="all">Todos</button>
-                        <button class="filter-btn" data-filter="seeds">Sementes</button>
-                        <button class="filter-btn" data-filter="crops">Cultivos</button>
-                        <button class="filter-btn" data-filter="equipment">Equipamentos</button>
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="seeds">Seeds</button>
+                        <button class="filter-btn" data-filter="crops">Crops</button>
+                        <button class="filter-btn" data-filter="equipment">Equipment</button>
                     </div>
                 </div>
                 
                 <div class="inventory-grid" id="inventory-grid">
-                    <p>Carregando inventário...</p>
+                    <p>Loading inventory...</p>
                 </div>
                 
                 <div class="inventory-actions">
-                    <button class="btn btn-secondary" onclick="this.sortInventory()">Organizar</button>
-                    <button class="btn btn-primary" onclick="this.sellJunk()">Vender Lixo</button>
+                    <button class="btn btn-secondary" onclick="this.sortInventory()">Sort</button>
+                    <button class="btn btn-primary" onclick="this.sellJunk()">Sell Junk</button>
                 </div>
             </div>
         `;
@@ -624,17 +624,17 @@ class Panels {
         return `
             <div class="settings-panel">
                 <div class="settings-tabs">
-                    <button class="tab-btn active" data-tab="game">Jogo</button>
-                    <button class="tab-btn" data-tab="graphics">Gráficos</button>
-                    <button class="tab-btn" data-tab="audio">Áudio</button>
-                    <button class="tab-btn" data-tab="controls">Controles</button>
+                    <button class="tab-btn active" data-tab="game">Game</button>
+                    <button class="tab-btn" data-tab="graphics">Graphics</button>
+                    <button class="tab-btn" data-tab="audio">Audio</button>
+                    <button class="tab-btn" data-tab="controls">Controls</button>
                 </div>
                 
                 <div class="tab-content active" data-tab="game">
                     <div class="settings-section">
-                        <h4>Configurações do Jogo</h4>
+                        <h4>Game Settings</h4>
                         <div class="setting-item">
-                            <label>Velocidade do Jogo:</label>
+                            <label>Game Speed:</label>
                             <select id="game-speed">
                                 <option value="0.5">0.5x</option>
                                 <option value="1" selected>1x</option>
@@ -645,13 +645,13 @@ class Panels {
                         <div class="setting-item">
                             <label>
                                 <input type="checkbox" id="auto-save" checked>
-                                Salvamento Automático
+                                Auto Save
                             </label>
                         </div>
                         <div class="setting-item">
                             <label>
                                 <input type="checkbox" id="notifications" checked>
-                                Notificações
+                                Notifications
                             </label>
                         </div>
                     </div>
@@ -659,17 +659,17 @@ class Panels {
                 
                 <div class="tab-content" data-tab="graphics">
                     <div class="settings-section">
-                        <h4>Configurações Gráficas</h4>
+                        <h4>Graphics Settings</h4>
                         <div class="setting-item">
                             <label>
                                 <input type="checkbox" id="animations" checked>
-                                Animações
+                                Animations
                             </label>
                         </div>
                         <div class="setting-item">
                             <label>
                                 <input type="checkbox" id="particles" checked>
-                                Efeitos de Partículas
+                                Particle Effects
                             </label>
                         </div>
                     </div>
@@ -677,17 +677,17 @@ class Panels {
                 
                 <div class="tab-content" data-tab="audio">
                     <div class="settings-section">
-                        <h4>Configurações de Áudio</h4>
+                        <h4>Audio Settings</h4>
                         <div class="setting-item">
-                            <label>Volume Geral:</label>
+                            <label>Master Volume:</label>
                             <input type="range" id="master-volume" min="0" max="100" value="50">
                         </div>
                         <div class="setting-item">
-                            <label>Volume da Música:</label>
+                            <label>Music Volume:</label>
                             <input type="range" id="music-volume" min="0" max="100" value="30">
                         </div>
                         <div class="setting-item">
-                            <label>Volume dos Efeitos:</label>
+                            <label>Effects Volume:</label>
                             <input type="range" id="sfx-volume" min="0" max="100" value="70">
                         </div>
                     </div>
@@ -695,27 +695,27 @@ class Panels {
                 
                 <div class="tab-content" data-tab="controls">
                     <div class="settings-section">
-                        <h4>Controles</h4>
+                        <h4>Controls</h4>
                         <div class="controls-list">
                             <div class="control-item">
-                                <span>Abrir Fazenda:</span>
+                                <span>Open Farm:</span>
                                 <kbd>F</kbd>
                             </div>
                             <div class="control-item">
-                                <span>Abrir Mercado:</span>
+                                <span>Open Market:</span>
                                 <kbd>M</kbd>
                             </div>
                             <div class="control-item">
-                                <span>Abrir Pesquisa:</span>
+                                <span>Open Research:</span>
                                 <kbd>R</kbd>
                             </div>
                             <div class="control-item">
-                                <span>Abrir Inventário:</span>
+                                <span>Open Inventory:</span>
                                 <kbd>I</kbd>
                             </div>
                             <div class="control-item">
-                                <span>Pausar/Continuar:</span>
-                                <kbd>Espaço</kbd>
+                                <span>Pause/Resume:</span>
+                                <kbd>Space</kbd>
                             </div>
                         </div>
                     </div>

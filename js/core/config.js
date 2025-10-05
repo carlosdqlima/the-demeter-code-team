@@ -1,5 +1,5 @@
 /**
- * Configurações globais do NASA Farm Navigators
+ * Configurações globais do FarmVerse
  * Centraliza todas as configurações do jogo para fácil manutenção
  */
 

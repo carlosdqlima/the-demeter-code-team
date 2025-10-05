@@ -1,5 +1,5 @@
 /**
- * Configuração do ESLint para o projeto NASA Farm Navigators
+ * Configuração do ESLint para o projeto FarmVerse
  * Inclui regras para JavaScript moderno e boas práticas
  */
 module.exports = {

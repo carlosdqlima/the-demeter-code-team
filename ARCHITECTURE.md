@@ -1,4 +1,4 @@
-# NASA Farm Navigators - Arquitetura do Projeto
+# FarmVerse - Arquitetura do Projeto
 
 ## 🎯 Visão Geral
 Jogo estilo Top Crop com mapa mundial interativo utilizando dados reais da NASA para agricultura global.

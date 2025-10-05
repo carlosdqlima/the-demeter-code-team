@@ -1,5 +1,5 @@
 /**
- * Utilitários e funções auxiliares para o NASA Farm Navigators
+ * Utilitários e funções auxiliares para o FarmVerse
  * Contém funções reutilizáveis em todo o projeto
  */
 

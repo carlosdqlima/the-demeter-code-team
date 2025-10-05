@@ -1,5 +1,5 @@
 /**
- * Configuração do Prettier para o projeto NASA Farm Navigators
+ * Configuração do Prettier para o projeto FarmVerse
  * Define regras de formatação consistente para todo o código
  */
 module.exports = {

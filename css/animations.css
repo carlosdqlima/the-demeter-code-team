@@ -405,6 +405,15 @@
     }
 }
 
+@keyframes earth-rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 @keyframes plant-grow {
     0% {
         transform: scale(0) translateY(20px);

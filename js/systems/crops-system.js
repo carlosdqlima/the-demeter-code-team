@@ -1,5 +1,5 @@
 /**
- * Sistema de Culturas - NASA Farm Navigators
+ * Sistema de Culturas - FarmVerse
  * Gerencia informações sobre diferentes tipos de culturas e suas características
  */
 

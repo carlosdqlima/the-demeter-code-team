@@ -1,6 +1,6 @@
 /* ===== CSS RESET AND VARIABLES ===== */
 :root {
-    /* === OFFICIAL NASA FARM NAVIGATORS COLOR PALETTE === */
+    /* === OFFICIAL FARMVERSE COLOR PALETTE === */
     
     /* Primary Colors */
     --orbital-blue: #0B3D91;        /* Orbital Blue - Main interface color */
@@ -275,6 +275,19 @@ html, body {
     filter: drop-shadow(0 0 10px rgba(120, 219, 255, 0.4));
 }
 
+.nasa-logo .earth-loading {
+    width: 80px;
+    height: 80px;
+    margin-bottom: var(--spacing-md);
+    border-radius: 50%;
+    animation: earth-rotation 4s linear infinite;
+    box-shadow: 
+        0 0 20px rgba(120, 219, 255, 0.4),
+        0 0 40px rgba(120, 219, 255, 0.2),
+        inset 0 0 20px rgba(0, 0, 0, 0.2);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
 .nasa-logo h1 {
     font-size: 2.5rem;
     font-weight: 700;
@@ -418,9 +431,29 @@ html, body {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
+.overlay-header .header-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.overlay-header .earth-overlay {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    animation: earth-rotation 6s linear infinite;
+    box-shadow: 
+        0 0 30px rgba(120, 219, 255, 0.6),
+        0 0 60px rgba(120, 219, 255, 0.3),
+        inset 0 0 20px rgba(0, 0, 0, 0.2);
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+}
+
 .overlay-header h1 {
     font-size: 3rem;
-    margin: 0 0 1rem 0;
+    margin: 0;
     font-weight: 700;
     text-shadow: 
         2px 2px 4px rgba(0, 0, 0, 0.8),
@@ -597,6 +630,19 @@ html, body {
 .header-left .logo i {
     font-size: 1.5rem;
     color: var(--primary-color);
+}
+
+.header-left .logo .earth-logo {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(11, 61, 145, 0.3);
+    transition: var(--transition-normal);
+}
+
+.header-left .logo .earth-logo:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(11, 61, 145, 0.5);
 }
 
 .header-center .player-stats {

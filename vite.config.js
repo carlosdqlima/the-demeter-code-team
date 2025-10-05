@@ -1,5 +1,5 @@
 /**
- * Configuração do Vite para o projeto NASA Farm Navigators
+ * Configuração do Vite para o projeto FarmVerse
  * Inclui otimizações para desenvolvimento e produção
  */
 import { defineConfig } from 'vite';

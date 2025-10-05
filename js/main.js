@@ -1,5 +1,5 @@
 /**
- * NASA Farm Navigators - Arquivo Principal
+ * FarmVerse - Arquivo Principal
  * Inicializa e coordena todos os sistemas do jogo
  */
 
@@ -55,7 +55,7 @@ class GameInstance {
      */
     async initialize() {
         try {
-            console.log('🚀 Iniciando NASA Farm Navigators...');
+            console.log('🚀 Iniciando FarmVerse...');
             
             // Valida configurações
             if (!validateConfig()) {
@@ -83,10 +83,10 @@ class GameInstance {
             this.isInitialized = true;
             this.isLoading = false;
             
-            console.log('✅ NASA Farm Navigators inicializado com sucesso!');
+            console.log('✅ FarmVerse inicializado com sucesso!');
             
             // Mostra notificação de boas-vindas
-            Utils.showNotification('Bem-vindo ao NASA Farm Navigators!', 'success');
+            Utils.showNotification('Bem-vindo ao FarmVerse!', 'success');
             
         } catch (error) {
             console.error('❌ Erro ao inicializar o jogo:', error);

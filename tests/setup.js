@@ -1,5 +1,5 @@
 /**
- * Arquivo de setup para testes do projeto NASA Farm Navigators
+ * Arquivo de setup para testes do projeto FarmVerse
  * Configura o ambiente de teste e mocks globais
  */
 

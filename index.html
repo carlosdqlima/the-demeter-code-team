@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="NASA Farm Navigators - Global agriculture game with real NASA data">
-    <title>NASA Farm Navigators - Global Agriculture</title>
+    <meta name="description" content="FarmVerse - Global agriculture game with real NASA data">
+    <title>FarmVerse - Global Agriculture</title>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/images/ui/favicon.ico">
+    <link rel="icon" type="image/png" href="assets/images/icons/Earth.png">
+    <link rel="apple-touch-icon" href="assets/images/icons/Earth.png">
     
     <!-- CSS Frameworks -->
     <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@^5.8.0/dist/maplibre-gl.css" />
@@ -35,8 +36,8 @@
         
         <div class="loading-content">
             <div class="nasa-logo">
-                <i class="fas fa-satellite"></i>
-                <h1>NASA Farm Navigators</h1>
+                <img src="assets/images/icons/Earth.png" alt="Earth" class="earth-loading">
+                <h1>FarmVerse</h1>
             </div>
             <div class="loading-bar">
                 <div class="loading-progress" id="loading-progress"></div>
@@ -48,7 +49,10 @@
     <!-- World Map Fullscreen Overlay -->
     <div id="world-map-overlay" class="world-map-overlay active">
         <div class="overlay-header">
-            <h1>🌍 NASA Farm Navigators</h1>
+            <div class="header-title">
+                <img src="assets/images/icons/Earth.png" alt="Earth" class="earth-overlay">
+                <h1>FarmVerse</h1>
+            </div>
             <p>Select a region to start your agricultural journey</p>
         </div>
         <div id="world-map-fullscreen" class="world-map-fullscreen"></div>
@@ -73,8 +77,8 @@
         <header class="game-header">
             <div class="header-left">
                 <div class="logo">
-                    <i class="fas fa-globe-americas"></i>
-                    <span>NASA Farm Navigators</span>
+                    <img src="assets/images/icons/Earth.png" alt="Earth" class="earth-logo">
+                    <span>FarmVerse</span>
                 </div>
             </div>
             
@@ -234,27 +238,27 @@
                             <h4>Crops</h4>
                             <div class="crop-buttons">
                                 <button class="crop-btn active" data-crop="wheat" title="Wheat">
-                                    <i class="fas fa-wheat-awn"></i>
+                                    <img src="assets/images/crops/wheat.png" alt="Wheat">
                                     <span>Wheat</span>
                                 </button>
                                 <button class="crop-btn" data-crop="corn" title="Corn">
-                                    <i class="fas fa-corn"></i>
+                                    <img src="assets/images/crops/corn.png" alt="Corn">
                                     <span>Corn</span>
                                 </button>
                                 <button class="crop-btn" data-crop="soy" title="Soy">
-                                    <i class="fas fa-leaf"></i>
+                                    <img src="assets/images/crops/soy.png" alt="Soy">
                                     <span>Soy</span>
                                 </button>
                                 <button class="crop-btn" data-crop="tomato" title="Tomato">
-                                    <i class="fas fa-apple-alt"></i>
+                                    <img src="assets/images/crops/tomato.png" alt="Tomato">
                                     <span>Tomato</span>
                                 </button>
                                 <button class="crop-btn" data-crop="potato" title="Potato">
-                                    <i class="fas fa-circle"></i>
+                                    <img src="assets/images/crops/potato.png" alt="Potato">
                                     <span>Potato</span>
                                 </button>
                                 <button class="crop-btn" data-crop="carrot" title="Carrot">
-                                    <i class="fas fa-carrot"></i>
+                                    <img src="assets/images/crops/carrot.png" alt="Carrot">
                                     <span>Carrot</span>
                                 </button>
                             </div>
@@ -281,7 +285,7 @@
                     </button>
                 </div>
                 
-                <!-- NASA Farm Navigators Integrated Interface -->
+                <!-- FarmVerse Integrated Interface -->
                 
                 <!-- Game Overlay UI -->
                 <div class="game-overlay">
@@ -313,17 +317,17 @@
 
                     <!-- Technology Buttons -->
                     <div class="tech-buttons">
-                        <button class="tech-btn locked" title="Technology Locked">
+                        <button class="tech-btn locked" data-tech="irrigation" title="Technology Locked">
                             <span class="lock-icon">🔒</span>
                         </button>
                         <div class="tech-separator"></div>
-                        <button class="tech-btn locked" title="Technology Locked">
+                        <button class="tech-btn locked" title="Tecnologia Bloqueada">
                             <span class="lock-icon">🔒</span>
                         </button>
-                        <button class="tech-btn locked" title="Technology Locked">
+                        <button class="tech-btn locked" title="Tecnologia Bloqueada">
                             <span class="lock-icon">🔒</span>
                         </button>
-                        <button class="tech-btn locked" title="Technology Locked">
+                        <button class="tech-btn locked" title="Tecnologia Bloqueada">
                             <span class="lock-icon">🔒</span>
                         </button>
                     </div>

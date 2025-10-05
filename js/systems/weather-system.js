@@ -1,5 +1,5 @@
 /**
- * Sistema Climático - NASA Farm Navigators
+ * Sistema Climático - FarmVerse
  * Gerencia condições meteorológicas, previsões e impactos na agricultura
  */
 

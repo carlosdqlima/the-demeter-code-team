@@ -1,5 +1,5 @@
 /**
- * Game - NASA Farm Navigators
+ * Game - FarmVerse
  * Sistema principal do jogo que coordena todos os subsistemas
  */
 
@@ -69,7 +69,7 @@ class Game {
      */
     async initialize() {
         try {
-            console.log('🚀 Inicializando NASA Farm Navigators...');
+            console.log('🚀 Inicializando FarmVerse...');
             
             // Mostra tela de carregamento
             this.showLoadingScreen();
@@ -93,7 +93,7 @@ class Game {
             this.isRunning = true;
             this.gameState.startTime = Date.now();
             
-            console.log('✅ NASA Farm Navigators inicializado com sucesso!');
+            console.log('✅ FarmVerse inicializado com sucesso!');
             
             // Dispara evento de inicialização
             this.dispatchEvent('gameInitialized', {
@@ -104,7 +104,7 @@ class Game {
             // Show welcome message
             if (this.systems.modals) {
                 this.systems.modals.success(
-                    'Welcome to NASA Farm Navigators! Explore the world and build sustainable farms.',
+                    'Welcome to FarmVerse! Explore the world and build sustainable farms.',
                     'Game Started'
                 );
             }
@@ -549,7 +549,7 @@ class Game {
         if (this.systems.modals) {
             this.systems.modals.showModal({
                 type: 'custom',
-                title: 'Ajuda - NASA Farm Navigators',
+                title: 'Ajuda - FarmVerse',
                 size: { width: 600, height: 500 },
                 content: `
                     <div class="help-content">

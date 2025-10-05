@@ -1,5 +1,5 @@
 /**
- * Modals - NASA Farm Navigators
+ * Modals - FarmVerse
  * Gerencia todas as janelas modais do jogo
  */
 

@@ -1,5 +1,5 @@
 /**
- * Sistema Visual de Fazendas - NASA Farm Navigators
+ * Sistema Visual de Fazendas - FarmVerse
  * Sistema completo de fazendas com representação visual usando Canvas
  * Similar ao Top Crop com funcionalidades avançadas
  */

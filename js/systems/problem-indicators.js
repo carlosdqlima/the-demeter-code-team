@@ -1,5 +1,5 @@
 /**
- * Sistema de Indicadores de Problemas - NASA Farm Navigators
+ * Sistema de Indicadores de Problemas - FarmVerse
  * Monitora e exibe problemas agrícolas baseados em dados da NASA
  */
 

@@ -1,5 +1,5 @@
 /**
- * Crops Data - NASA Farm Navigators
+ * Crops Data - FarmVerse
  * Configuration of crops available for planting
  */
 

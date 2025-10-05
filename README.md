@@ -1,10 +1,10 @@
-# 🌍 NASA Farm Navigators
+# 🌍 FarmVerse
 
 ## Jogo de Agricultura Global com Dados Reais da NASA
 
-**NASA Farm Navigators** é um jogo de simulação agrícola inovador que combina mecânicas de jogo estilo Top Crop com dados climáticos e geográficos reais da NASA. Os jogadores gerenciam fazendas ao redor do mundo, tomando decisões baseadas em informações científicas reais sobre clima, solo e sustentabilidade.
+**FarmVerse** é um jogo de simulação agrícola inovador que combina mecânicas de jogo estilo Top Crop com dados climáticos e geográficos reais da NASA. Os jogadores gerenciam fazendas ao redor do mundo, tomando decisões baseadas em informações científicas reais sobre clima, solo e sustentabilidade.
 
-![NASA Farm Navigators](assets/images/ui/banner.png)
+![FarmVerse](assets/images/ui/banner.png)
 
 ## 🎯 Características Principais
 

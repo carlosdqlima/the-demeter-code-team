@@ -1,5 +1,5 @@
 /**
- * HUD (Heads-Up Display) - NASA Farm Navigators
+ * HUD (Heads-Up Display) - FarmVerse
  * Gerencia a interface do usuário com informações em tempo real
  */
 
@@ -203,7 +203,7 @@ class HUD {
             <div class="hud-widget farms-widget">
                 <div class="widget-header">
                     <span class="widget-icon">🚜</span>
-                    <span class="widget-title">Fazendas</span>
+                    <span class="widget-title">Farms</span>
                 </div>
                 <div class="widget-content">
                     <div class="farm-stats">
@@ -212,11 +212,11 @@ class HUD {
                             <span class="stat-value" id="farms-total">0</span>
                         </div>
                         <div class="farm-stat">
-                            <span class="stat-label">Ativas:</span>
+                            <span class="stat-label">Active:</span>
                             <span class="stat-value" id="farms-active">0</span>
                         </div>
                         <div class="farm-stat">
-                            <span class="stat-label">Produzindo:</span>
+                            <span class="stat-label">Producing:</span>
                             <span class="stat-value" id="farms-producing">0</span>
                         </div>
                     </div>
@@ -238,16 +238,16 @@ class HUD {
             <div class="hud-widget research-widget">
                 <div class="widget-header">
                     <span class="widget-icon">🔬</span>
-                    <span class="widget-title">Pesquisa</span>
+                    <span class="widget-title">Research</span>
                 </div>
                 <div class="widget-content">
                     <div class="research-current" id="research-current">
-                        <div class="research-none">Nenhuma pesquisa ativa</div>
+                        <div class="research-none">No active research</div>
                     </div>
                     <div class="research-points">
                         <span class="points-icon">🧪</span>
                         <span class="points-amount" id="research-points">0</span>
-                        <span class="points-label">Pontos</span>
+                        <span class="points-label">Points</span>
                     </div>
                 </div>
             </div>
@@ -255,24 +255,24 @@ class HUD {
             <div class="hud-widget quick-actions">
                 <div class="widget-header">
                     <span class="widget-icon">⚡</span>
-                    <span class="widget-title">Ações Rápidas</span>
+                    <span class="widget-title">Quick Actions</span>
                 </div>
                 <div class="widget-content">
                     <button class="quick-action-btn" id="btn-plant-crops">
                         <span class="btn-icon">🌱</span>
-                        <span class="btn-text">Plantar</span>
+                        <span class="btn-text">Plant</span>
                     </button>
                     <button class="quick-action-btn" id="btn-harvest-crops">
                         <span class="btn-icon">🌾</span>
-                        <span class="btn-text">Colher</span>
+                        <span class="btn-text">Harvest</span>
                     </button>
                     <button class="quick-action-btn" id="btn-water-crops">
                         <span class="btn-icon">💧</span>
-                        <span class="btn-text">Irrigar</span>
+                        <span class="btn-text">Water</span>
                     </button>
                     <button class="quick-action-btn" id="btn-market">
                         <span class="btn-icon">🏪</span>
-                        <span class="btn-text">Mercado</span>
+                        <span class="btn-text">Market</span>
                     </button>
                 </div>
             </div>
@@ -280,24 +280,24 @@ class HUD {
             <div class="hud-widget farm-care">
                 <div class="widget-header">
                     <span class="widget-icon">🚜</span>
-                    <span class="widget-title">Cuidados da Fazenda</span>
+                    <span class="widget-title">Farm Care</span>
                 </div>
                 <div class="widget-content">
                     <button class="quick-action-btn tool-btn" id="btn-irrigation" data-tool="irrigation" draggable="true">
                         <span class="btn-icon">🚿</span>
-                        <span class="btn-text">Sistema de Irrigação</span>
+                        <span class="btn-text">Irrigation System</span>
                     </button>
                     <button class="quick-action-btn tool-btn" id="btn-fertilize" data-tool="fertilize" draggable="true">
                         <span class="btn-icon">🧪</span>
-                        <span class="btn-text">Fertilizar</span>
+                        <span class="btn-text">Fertilize</span>
                     </button>
                     <button class="quick-action-btn tool-btn" id="btn-pesticide" data-tool="pesticide" draggable="true">
                         <span class="btn-icon">🦟</span>
-                        <span class="btn-text">Pesticida</span>
+                        <span class="btn-text">Pesticide</span>
                     </button>
                     <button class="quick-action-btn tool-btn" id="btn-organic-fertilizer" data-tool="organic-fertilizer" draggable="true">
                         <span class="btn-icon">🌿</span>
-                        <span class="btn-text">Adubo Orgânico</span>
+                        <span class="btn-text">Organic Fertilizer</span>
                     </button>
                     <button class="quick-action-btn tool-btn" id="btn-soil-analysis" data-tool="soil-analysis" draggable="true">
                         <span class="btn-icon">🔬</span>
@@ -350,14 +350,14 @@ class HUD {
             </div>
             
             <div class="hud-section controls-info">
-                <button class="hud-control-btn" id="btn-pause" title="Pausar/Continuar">
+                <button class="hud-control-btn" id="btn-pause" title="Pause/Resume">
                     <span class="control-icon">⏸️</span>
                 </button>
-                <button class="hud-control-btn" id="btn-speed" title="Velocidade do Jogo">
+                <button class="hud-control-btn" id="btn-speed" title="Game Speed">
                     <span class="control-icon">⏩</span>
                     <span class="speed-text">1x</span>
                 </button>
-                <button class="hud-control-btn" id="btn-settings" title="Configurações">
+                <button class="hud-control-btn" id="btn-settings" title="Settings">
                     <span class="control-icon">⚙️</span>
                 </button>
             </div>

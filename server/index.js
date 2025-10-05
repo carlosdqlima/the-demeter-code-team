@@ -1,5 +1,5 @@
 /**
- * Servidor Express para o projeto NASA Farm Navigators
+ * Servidor Express para o projeto FarmVerse
  * Fornece APIs para dados da NASA, persistência e funcionalidades em tempo real
  */
 import express from 'express';
@@ -149,7 +149,7 @@ app.use('*', (req, res) => {
 
 // Inicialização do servidor
 server.listen(PORT, () => {
-  console.log(`🚀 Servidor NASA Farm Navigators rodando na porta ${PORT}`);
+  console.log(`🚀 Servidor FarmVerse rodando na porta ${PORT}`);
   console.log(`📊 Ambiente: ${NODE_ENV}`);
   console.log(`🌐 Socket.IO habilitado para funcionalidades em tempo real`);
   

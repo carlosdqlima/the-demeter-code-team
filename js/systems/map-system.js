@@ -1,5 +1,5 @@
 /**
- * Sistema de Mapa Mundial - NASA Farm Navigators
+ * Sistema de Mapa Mundial - FarmVerse
  * Gerencia o mapa interativo global usando MapLibre GL JS
  */
 

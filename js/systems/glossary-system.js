@@ -1,5 +1,5 @@
 /**
- * Sistema de Glossário - NASA Farm Navigators
+ * Sistema de Glossário - FarmVerse
  * Fornece informações regionais e dados educativos sobre agricultura
  */
 

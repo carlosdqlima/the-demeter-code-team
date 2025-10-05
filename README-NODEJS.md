@@ -1,6 +1,6 @@
-# NASA Farm Navigators - Configuração Node.js
+# FarmVerse - Configuração Node.js
 
-Este documento descreve como configurar e usar as funcionalidades Node.js adicionadas ao projeto NASA Farm Navigators.
+Este documento descreve como configurar e usar as funcionalidades Node.js adicionadas ao projeto FarmVerse.
 
 ## 🚀 Funcionalidades Adicionadas
 

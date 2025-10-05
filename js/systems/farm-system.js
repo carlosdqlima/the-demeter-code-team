@@ -1,5 +1,5 @@
 /**
- * Sistema de Fazendas - NASA Farm Navigators
+ * Sistema de Fazendas - FarmVerse
  * Gerencia criação, plantio, colheita e manutenção de fazendas
  */
 

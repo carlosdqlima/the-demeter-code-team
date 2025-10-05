@@ -1,7 +1,7 @@
 {
-  "name": "nasa-farm-navigators",
+  "name": "farmverse",
   "version": "1.0.0",
-  "description": "Sistema de navegação e gestão de fazendas com dados da NASA para agricultura sustentável",
+  "description": "FarmVerse - Sistema de navegação e gestão de fazendas com dados da NASA para agricultura sustentável",
   "main": "index.html",
   "type": "module",
   "scripts": {
@@ -25,7 +25,7 @@
     "javascript",
     "web-app"
   ],
-  "author": "NASA Farm Navigators Team",
+  "author": "FarmVerse Team",
   "license": "MIT",
   "dependencies": {
     "express": "^4.18.2",

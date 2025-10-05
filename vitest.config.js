@@ -1,5 +1,5 @@
 /**
- * Configuração do Vitest para testes do projeto NASA Farm Navigators
+ * Configuração do Vitest para testes do projeto FarmVerse
  * Inclui configurações para testes unitários e de integração
  */
 import { defineConfig } from 'vitest/config';

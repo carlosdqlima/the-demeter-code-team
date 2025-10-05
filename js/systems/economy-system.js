@@ -1,5 +1,5 @@
 /**
- * Sistema Econômico - NASA Farm Navigators
+ * Sistema Econômico - FarmVerse
  * Gerencia economia, mercado, preços e transações financeiras
  */
 
