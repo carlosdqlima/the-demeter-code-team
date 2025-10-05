@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo - Fundo Espacial do Mapa</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@^5.8.0/dist/maplibre-gl.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/ui.css">
+    
+    <style>
+        body { margin: 0; padding: 0; font-family: Arial, sans-serif; overflow: hidden; }
+        .demo-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 2000;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        .demo-controls button {
+            background: #059669;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        .demo-controls button:hover {
+            background: #047857;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-controls">
+        <h4>🌌 Demo Fundo Espacial</h4>
+        <button onclick="toggleOverlay()">Toggle Overlay</button>
+        <button onclick="toggleAnimation()">Toggle Animação</button>
+        <p><small>Fundo com estrelas animadas, nebulosas e efeitos espaciais</small></p>
+    </div>
+
+    <!-- Overlay do Mapa Mundial com Fundo Espacial -->
+    <div id="world-map-overlay" class="world-map-overlay active">
+        <div class="overlay-header">
+            <h1>🌍 NASA Farm Navigators</h1>
+            <p>Explore o cosmos enquanto navega pelas regiões agrícolas da Terra</p>
+        </div>
+        <div id="world-map-fullscreen" class="world-map-fullscreen">
+            <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: white; text-align: center;">
+                <div>
+                    <i class="fas fa-globe-americas" style="font-size: 4rem; margin-bottom: 1rem; opacity: 0.7;"></i>
+                    <h2>Mapa Mundial Aqui</h2>
+                    <p>O fundo espacial com estrelas animadas está ativo!</p>
+                    <p><small>Observe as estrelas se movendo e as nebulosas pulsando</small></p>
+                </div>
+            </div>
+        </div>
+        <div class="overlay-footer">
+            <div class="map-legend">
+                <div class="legend-item">
+                    <span class="legend-color" style="background: #059669;"></span>
+                    <span>Regiões Agrícolas Disponíveis</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background: #f59e0b;"></span>
+                    <span>Tema Espacial Ativo</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background: #8b5cf6;"></span>
+                    <span>Nebulosas e Estrelas</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let overlayActive = true;
+        let animationActive = true;
+        
+        function toggleOverlay() {
+            const overlay = document.getElementById('world-map-overlay');
+            overlayActive = !overlayActive;
+            
+            if (overlayActive) {
+                overlay.classList.add('active');
+            } else {
+                overlay.classList.remove('active');
+            }
+        }
+        
+        function toggleAnimation() {
+            const overlay = document.getElementById('world-map-overlay');
+            animationActive = !animationActive;
+            
+            if (animationActive) {
+                overlay.style.animation = 'starfield 60s linear infinite';
+            } else {
+                overlay.style.animation = 'none';
+            }
+        }
+        
+        // Adiciona algumas informações dinâmicas
+        setInterval(() => {
+            const time = new Date().toLocaleTimeString();
+            document.title = `Demo Espacial - ${time}`;
+        }, 1000);
+    </script>
+</body>
+</html>

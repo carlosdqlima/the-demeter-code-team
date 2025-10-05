@@ -1,0 +1,83 @@
+/* Definição das variáveis de cor da nossa paleta */
+:root {
+    --orbital-blue: #0B3D91;
+    --harvest-green: #2E8540;
+    --fertile-brown: #8B4513;
+    --aqua-blue: #56A0D3;
+    --space-gray: #F0F2F5;
+    --dark-graphite: #333333;
+    --alert-orange: #FFA500;
+    --critical-red: #D8000C;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--space-gray);
+    color: var(--dark-graphite);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 20px;
+}
+
+
+
+#dashboard {
+    width: 400px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+#dashboard .header {
+    background-color: var(--orbital-blue);
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+#dashboard .header h2 {
+    margin: 0;
+}
+
+#dashboard .data-section, #dashboard .action-section {
+    padding: 20px;
+    border-bottom: 1px solid var(--space-gray);
+}
+
+#map-container {
+    height: 200px;
+    width: 100%;
+    margin-bottom: 15px;
+    background-color: #ccc; /* Cor de placeholder */
+}
+
+#dashboard button {
+    background-color: var(--harvest-green);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#dashboard button:hover {
+    background-color: #256a34; /* Um verde um pouco mais escuro */
+}
+
+/* Exemplo de alerta */
+.metrics #weather-forecast {
+    color: var(--alert-orange);
+    font-weight: bold;
+}

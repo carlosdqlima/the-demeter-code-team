@@ -1,0 +1,161 @@
+# Dependências
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Build e distribuição
+dist/
+build/
+.vite/
+.cache/
+.parcel-cache/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Dados e configurações sensíveis
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+server/data/
+*.sqlite
+*.db
+
+# Arquivos temporários
+*.tmp
+*.temp
+.tmp/
+.temp/
+
+# Cobertura de testes
+coverage/
+.nyc_output/
+.coverage/
+
+# Arquivos de IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Arquivos de sistema
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Arquivos de backup
+*.bak
+*.backup
+*~
+
+# Arquivos de upload
+uploads/
+temp-uploads/
+
+# Certificados SSL
+*.pem
+*.key
+*.crt
+*.cert
+
+# Arquivos de configuração local
+config/local.js
+config/local.json
+
+# Arquivos de sessão
+sessions/
+.sessions/
+
+# Cache do ESLint
+.eslintcache
+
+# Cache do Prettier
+.prettiercache
+
+# Arquivos de teste
+test-results/
+tests/results/
+*.test.js.snap
+
+# Arquivos de documentação gerados
+docs/generated/
+api-docs/
+
+# Arquivos de monitoramento
+.pm2/
+pm2.json
+
+# Arquivos de Docker (se usado)
+.dockerignore
+docker-compose.override.yml
+
+# Arquivos específicos do Windows
+desktop.ini
+$RECYCLE.BIN/
+
+# Arquivos específicos do macOS
+.AppleDouble
+.LSOverride
+Icon
+
+# Arquivos específicos do Linux
+*~
+
+# Arquivos de editor
+*.sublime-project
+*.sublime-workspace
+
+# Arquivos de JetBrains
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Arquivos do Visual Studio Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Arquivos de profiling
+*.prof
+*.cpuprofile
+*.heapprofile
+
+# Arquivos de análise de bundle
+bundle-analyzer-report.html
+stats.json
+
+# Arquivos de cache do Vite
+.vite-cache/
+
+# Arquivos de cache do Vitest
+.vitest/
+
+# Arquivos de cache do TypeScript
+*.tsbuildinfo
+
+# Arquivos de cache do Babel
+.babel-cache/
+
+# Arquivos de cache do Webpack
+.webpack-cache/
+
+# Arquivos de cache do Rollup
+.rollup-cache/

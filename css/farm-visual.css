@@ -1,0 +1,295 @@
+/* ===== SISTEMA VISUAL DE FAZENDAS ===== */
+
+/* Toggle de Visualização */
+.view-toggle {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 25px;
+    padding: 5px;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.btn-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-toggle.active {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.btn-toggle i {
+    font-size: 16px;
+}
+
+/* Controles de Ferramentas */
+.tool-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tool-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 15px 10px;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.tool-btn:hover {
+    background: linear-gradient(135deg, #34495e, #2c3e50);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.tool-btn.active {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    border-color: #e74c3c;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}
+
+.tool-btn i {
+    font-size: 18px;
+}
+
+.tool-btn span {
+    font-size: 11px;
+    text-align: center;
+}
+
+/* Seletor de Culturas Atualizado */
+.crop-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.crop-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 10px;
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.crop-btn:hover {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.crop-btn.active {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    border-color: #f39c12;
+    box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
+}
+
+/* Informações da Fazenda */
+.farm-info-overlay {
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 15px;
+    padding: 20px;
+    min-width: 250px;
+    z-index: 15;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.farm-info-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.farm-info-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.farm-info-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.farm-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    color: #4CAF50;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #bbb;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Tooltip para Plots */
+.plot-tooltip {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 12px;
+    pointer-events: none;
+    z-index: 20;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.plot-tooltip.visible {
+    opacity: 1;
+}
+
+.plot-tooltip .crop-name {
+    font-weight: bold;
+    color: #4CAF50;
+    margin-bottom: 5px;
+}
+
+.plot-tooltip .growth-stage {
+    color: #f39c12;
+    margin-bottom: 3px;
+}
+
+.plot-tooltip .time-remaining {
+    color: #3498db;
+    font-size: 11px;
+}
+
+/* Animações de Partículas */
+@keyframes particle-float {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-30px) scale(0.5);
+        opacity: 0;
+    }
+}
+
+.particle {
+    position: absolute;
+    pointer-events: none;
+    animation: particle-float 1s ease-out forwards;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .view-toggle {
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        transform: none;
+        justify-content: center;
+    }
+    
+    .btn-toggle span {
+        display: none;
+    }
+    
+    .farm-info-overlay {
+        right: 10px;
+        left: 10px;
+        top: 70px;
+        min-width: auto;
+    }
+    
+    .tool-selector,
+    .crop-selector {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Estados de Loading */
+.farm-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+    z-index: 25;
+}
+
+.farm-loading .spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid #4CAF50;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

@@ -1,0 +1,64 @@
+{
+  "name": "nasa-farm-navigators",
+  "version": "1.0.0",
+  "description": "Sistema de navegação e gestão de fazendas com dados da NASA para agricultura sustentável",
+  "main": "index.html",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "serve": "serve -s dist -p 3000",
+    "start": "npm run dev",
+    "lint": "eslint js/**/*.js --fix",
+    "format": "prettier --write \"**/*.{js,css,html,md}\"",
+    "test": "vitest",
+    "server": "node server/index.js",
+    "dev:full": "concurrently \"npm run server\" \"npm run dev\""
+  },
+  "keywords": [
+    "nasa",
+    "agriculture",
+    "farming",
+    "sustainability",
+    "phaser",
+    "javascript",
+    "web-app"
+  ],
+  "author": "NASA Farm Navigators Team",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "compression": "^1.7.4",
+    "socket.io": "^4.7.5",
+    "axios": "^1.6.2",
+    "dotenv": "^16.3.1",
+    "node-cron": "^3.0.3",
+    "sqlite3": "^5.1.6"
+  },
+  "devDependencies": {
+    "vite": "^5.0.8",
+    "@vitejs/plugin-legacy": "^5.2.0",
+    "eslint": "^8.56.0",
+    "prettier": "^3.1.1",
+    "concurrently": "^8.2.2",
+    "vitest": "^1.1.0",
+    "serve": "^14.2.1",
+    "nodemon": "^3.0.2",
+    "@types/node": "^20.10.6"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nasa-farm-navigators/nasa-farm-navigators.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nasa-farm-navigators/nasa-farm-navigators/issues"
+  },
+  "homepage": "https://nasa-farm-navigators.github.io/nasa-farm-navigators/"
+}

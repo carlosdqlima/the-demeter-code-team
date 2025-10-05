@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Sistema de Mapa - MapLibre GL JS</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@^5.8.0/dist/maplibre-gl.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/ui.css">
+    
+    <style>
+        body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        #world-map-fullscreen { height: 100vh; width: 100vw; }
+        .test-info {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-info">
+        <h3>🗺️ Teste MapLibre GL JS</h3>
+        <p id="status">Carregando...</p>
+    </div>
+    
+    <div id="world-map-fullscreen"></div>
+    
+    <!-- Scripts -->
+    <script src="https://unpkg.com/maplibre-gl@^5.8.0/dist/maplibre-gl.js"></script>
+    <script src="js/core/config.js"></script>
+    <script src="js/core/utils.js"></script>
+    <script src="js/data/regions-data.js"></script>
+    <script src="js/data/crops-data.js"></script>
+    <script src="js/systems/region-info-modal.js"></script>
+    <script src="js/systems/map-system.js"></script>
+    
+    <script>
+        const statusEl = document.getElementById('status');
+        
+        function updateStatus(message) {
+            statusEl.textContent = message;
+            console.log('📊', message);
+        }
+        
+        async function testMapSystem() {
+            try {
+                updateStatus('Verificando MapLibre GL JS...');
+                
+                if (typeof maplibregl === 'undefined') {
+                    throw new Error('MapLibre GL JS não carregado');
+                }
+                
+                updateStatus('Inicializando sistema de mapa...');
+                
+                // Cria instância do sistema de mapa
+                const mapSystem = new MapSystem();
+                
+                updateStatus('Carregando mapa...');
+                
+                // Inicializa o sistema
+                await mapSystem.initialize();
+                
+                updateStatus('✅ Mapa carregado com sucesso!');
+                
+                // Testa funcionalidades
+                setTimeout(() => {
+                    const markersCount = mapSystem.markers.size;
+                    const regionsCount = mapSystem.regions.size;
+                    updateStatus(`✅ ${regionsCount} regiões, ${markersCount} marcadores`);
+                }, 2000);
+                
+            } catch (error) {
+                updateStatus(`❌ Erro: ${error.message}`);
+                console.error('Erro no teste:', error);
+            }
+        }
+        
+        // Inicia teste quando a página carregar
+        document.addEventListener('DOMContentLoaded', testMapSystem);
+    </script>
+</body>
+</html>

@@ -1,0 +1,439 @@
+/* Estilos para o Sistema de Fazenda HTML */
+
+/* Container principal da fazenda */
+.farm-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #87CEEB 0%, #98FB98 100%);
+    overflow: hidden;
+    z-index: 2;
+    user-select: none;
+}
+
+/* Grid da fazenda */
+.farm-grid {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    gap: 2px;
+    background: rgba(139, 69, 19, 0.3);
+    border: 3px solid #8B4513;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+/* Parcela individual da fazenda */
+.farm-plot {
+    width: 40px;
+    height: 40px;
+    background: #8B4513;
+    border: 1px solid #654321;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    overflow: hidden;
+}
+
+.farm-plot:hover {
+    transform: scale(1.05);
+    border-color: #FFD700;
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.5);
+}
+
+.farm-plot.selected {
+    border-color: #00FF00;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+}
+
+/* Estados do solo */
+.farm-plot.dry {
+    background: #D2691E;
+}
+
+.farm-plot.watered {
+    background: #8B4513;
+    box-shadow: inset 0 0 10px rgba(0, 100, 200, 0.3);
+}
+
+.farm-plot.fertilized {
+    background: #A0522D;
+    box-shadow: inset 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+/* Culturas visuais */
+.visual-crop {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.visual-crop.stage-0 {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+.visual-crop.stage-1 {
+    font-size: 16px;
+    opacity: 0.8;
+}
+
+.visual-crop.stage-2 {
+    font-size: 20px;
+    opacity: 0.9;
+}
+
+.visual-crop.stage-3 {
+    font-size: 24px;
+    opacity: 1;
+    animation: mature-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes mature-glow {
+    from {
+        filter: brightness(1);
+    }
+    to {
+        filter: brightness(1.2);
+    }
+}
+
+/* Indicadores de status */
+.status-indicator {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.status-indicator.needs-water {
+    background: #FF4444;
+    animation: pulse 1s ease-in-out infinite;
+}
+
+.status-indicator.needs-fertilizer {
+    background: #FFD700;
+    animation: pulse 1s ease-in-out infinite;
+}
+
+.status-indicator.ready-harvest {
+    background: #00FF00;
+    animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
+}
+
+/* Controles da fazenda */
+.farm-controls {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 12px;
+    padding: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 250px;
+}
+
+.toolbar {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.tool-section,
+.crop-section,
+.care-section,
+.zoom-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tool-section h4,
+.crop-section h4,
+.care-section h4,
+.zoom-section h4 {
+    color: #FFD700;
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tool-buttons,
+.crop-buttons,
+.care-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.tool-btn,
+.crop-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 12px;
+}
+
+.tool-btn:hover,
+.crop-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.tool-btn.active,
+.crop-btn.active {
+    background: rgba(255, 215, 0, 0.3);
+    border-color: #FFD700;
+    color: #FFD700;
+}
+
+.tool-btn i,
+.crop-btn i {
+    font-size: 16px;
+}
+
+.zoom-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+.zoom-btn {
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.zoom-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.zoom-level {
+    color: #FFD700;
+    font-weight: bold;
+    min-width: 50px;
+    text-align: center;
+}
+
+/* Botão voltar ao mapa */
+.back-to-map-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 15;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(10px);
+}
+
+.back-to-map-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.back-to-map-btn i {
+    font-size: 16px;
+}
+
+/* Partículas de feedback */
+.particle {
+    position: absolute;
+    pointer-events: none;
+    z-index: 20;
+    font-size: 16px;
+    font-weight: bold;
+    animation: particle-float 1s ease-out forwards;
+}
+
+@keyframes particle-float {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-30px) scale(1.2);
+    }
+}
+
+.particle.success {
+    color: #00FF00;
+}
+
+.particle.error {
+    color: #FF4444;
+}
+
+.particle.water {
+    color: #00BFFF;
+}
+
+.particle.fertilizer {
+    color: #FFD700;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .farm-controls {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        top: auto;
+        max-width: 200px;
+    }
+    
+    .tool-buttons,
+    .crop-buttons {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .farm-plot {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .visual-crop {
+        font-size: 18px;
+    }
+    
+    .visual-crop.stage-3 {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .farm-controls {
+        max-width: 180px;
+    }
+    
+    .farm-plot {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .visual-crop {
+        font-size: 16px;
+    }
+    
+    .visual-crop.stage-3 {
+        font-size: 20px;
+    }
+}
+
+/* Animações de entrada */
+.farm-container.entering {
+    animation: farm-enter 0.5s ease-out;
+}
+
+@keyframes farm-enter {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.farm-grid.entering {
+    animation: grid-enter 0.7s ease-out;
+}
+
+@keyframes grid-enter {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* Estados de carregamento */
+.farm-container.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #87CEEB 0%, #98FB98 100%);
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #FFD700;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Estados de drag & drop */
+.farm-plot.drag-over {
+    outline: 2px dashed rgba(0, 180, 255, 0.7);
+    outline-offset: -2px;
+}
+
+.tool-btn.dragging {
+    opacity: 0.8;
+    transform: scale(0.98);
+}
